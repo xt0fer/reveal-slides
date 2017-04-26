@@ -102,3 +102,84 @@ Java has a few versions
 * 2014 Run the Jewels2 ny RTJ :: Java 8.0 Lambda Expressions 
 
 
+-
+-
+#Java is Simple
+
+Java is a subset of C++ it is designed to be a more straight forward version of this language
+
+-
+-
+
+#Java is Object Oriented
+
+Object Oriented Languages are designed to focus on the problem being solved and not the tools used to do it
+
+Java is designed with objects in mind which allows flexability in the creation of a solution.
+
+-
+-
+
+#Java is Distributed
+
+Java is designed to work over a network, and intended to enhance communication between systems.
+
+-
+-
+
+#Java is Robust
+
+Java is a strickly typed language, it is designed tod etect potential problems at compile time.
+
+-
+-
+
+#Java is secure
+
+Java design was always focused around facilitating communication over a network, so securitu has always been a priority.
+
+Java runs inside of the HEAP which is a memory sandbox, that allows Java to run in isolation inside a machine.
+
+-
+-
+
+#Java is Architecturally Neutral
+
+Java code is complied and translated into byte-code. This byte code is executed on the **JVM**. The **JVM can run on any platform or operating system.
+
+-
+-
+
+#Java is portable
+
+Java is designed to run on a vast number of devices. Its specification standardised its data types to allow it to provide prodictable functionality across devices.
+
+-
+-
+
+#Java is Interpreted
+
+Java is not completly compiled to an executable. Java is a hybrid in the sense that it compiles to java byte code, and that byte code is what is executed at run time.
+
+-
+-
+
+#Java is High Performance
+
+java uses a **just-in-time** compiler. As your applicationis running the interpreter can identify code that is used frequently and compile that down to machine-code to optimize and increase performance.
+
+-
+-
+
+#Java is multi-threaded
+
+Java is designed with agility at the forefront. It is capable of executing actions concurrently.
+
+-
+-
+
+#Java is dynamic
+
+Due to its ablility to go between interpreted and compiled execution, Java has the ability to dynamically update its programs during runtime via **reflection**
+ 
+	   
