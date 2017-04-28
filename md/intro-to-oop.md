@@ -2,11 +2,14 @@
 -
 -
 
+###Introduction to Object-Oriented Programming
+
 * Yesterday you had a lecture on procedural programming, which has its place in the world. The issue the bigger the problems get, the harder it is to manage the code base.
 
 -
 
 
+###Introduction to Object-Oriented Programming
 
 * Breaking the problem down into small logical objects that have a single responsibility is an easier way of managing larger problems, and scalability of solutions over time.
 * It is also allows for greater testability of code.
