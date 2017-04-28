@@ -12,6 +12,7 @@
 ###Introduction to Object-Oriented Programming
 
 * Breaking the problem down into small logical objects that have a single responsibility is an easier way of managing larger problems, and scalability of solutions over time.
+
 * It is also allows for greater testability of code.
 
 -
