@@ -103,7 +103,7 @@ As stated before all objects have 3 major parts
 
 -
 
-#Relationships between Classes
+##Relationships between Classes
 
 * For the TimeCard object to function properly it needs the TimeClock object to be created and in scope.
 
@@ -242,7 +242,7 @@ Public Class SpiderMan extends Hero {
 
 -
 
-###So who should the User ask for the Money?
+####So who should the User ask for the Money?
 
 * Bank ???
 * UserAccount ???
@@ -250,7 +250,7 @@ Public Class SpiderMan extends Hero {
 
 -
 
-###So who should the User ask for the Money?
+####So who should the User ask for the Money?
 
 * It makes the most sense for the User to Ask the Bank for the money. Even though the UserAccount is Dependent on the User object, the User object is not Dependent on the UserAccount. 
 
@@ -260,7 +260,7 @@ Public Class SpiderMan extends Hero {
 
 ####So who should the User ask for the Money?
 
-For the Bank to decide if they can provide the User with the money the User is asking for, it is Dependent on the UserAccount object. The Bank must ask the UserAccount object if there is enough money in it.
+*For the Bank to decide if they can provide the User with the money the User is asking for, it is Dependent on the UserAccount object. The Bank must ask the UserAccount object if there is enough money in it.
 
 -
 
@@ -333,6 +333,7 @@ public String canIBorrowMoney(Person person, Double amount ){
 	* We make them private because they only exist to help us answer the one question our interface is making available, *canIBorrowMoney(~)*.
 
 -
+###Private Methods
 
 ```
 private void doIKnowYou(Person person){
@@ -483,7 +484,7 @@ private static final Float pi = 3.1489;
 ```
 -
 -
-#Static Methods
+##Static Methods
 * Static methods are also sometimes referred to and factory methods. They are methods that do not do any direct operations on a object.
 
 ```
@@ -503,7 +504,7 @@ public class Calculator {
 -
 -
 
-#The main Method
+##The main Method
 
 * The main method is the entry point for your application. Remember you do not have any direct access to the heap where object exist in memory. So the only way to set the stage for our application to function is to use a static method. 
 
@@ -523,7 +524,7 @@ static void main(String[] args) { ... }
 -
 -
 
-#Method Parameters
+##Method Parameters
 * **call by value** - means that the method gets just the value that caller provides.
 * **call by reference** - means that the method gets the location of the variable that the caller provides.
 * So what does Java do???
@@ -544,13 +545,13 @@ static void main(String[] args) { ... }
 -
 -
 
-#Object Construction  
+##Object Construction  
 * Objects are containers, the objects we use and create are composed of other objects. 
 
 * As stated before , we are in a eternal value to avoid null. Object oriented programming is objects talking to other objects, if we send a message to a object that doesn’t exist our programs will fail.
 
 -
-##Constructors
+###Constructors
 * This is where constructors come in. We use constructors to control the creation of our objects, and guarantee that the member objects or fields that our object is comprised of exist, are available, and are at the state we need for them to do their job.
 
 -
@@ -600,7 +601,7 @@ public Superman() {}
 -
 -
 
-#Default Field Initialization
+##Default Field Initialization
 
 * If you don’t set a field explicitly in a constructor, it is automatically set to a default value: numbers to 0, boolean values to false, and object references to null. 
 * Some people consider it poor programming practice to rely on the defaults. Certainly, it makes it harder for someone to understand your code if fields are being initialized invisibly.
@@ -608,15 +609,16 @@ public Superman() {}
 -
 -
 
-#Naming conventions
+##Naming conventions
+
 * Life is already hard enough, lets not add complexity where there need not be any. Name things what they are. Sure we all love the idea of naming every variable after our favorite 80s cartoon characters, but eventually we will forget what String panthero5000 is in reference too.
 
 -
 -
 
-#this keyword
+##this keyword
 
-The this keyword is used to force a object to call itself. Even though its considered poor form to use it to reference instance variables unless its essential for clarity.
+* The this keyword is used to force a object to call itself. Even though its considered poor form to use it to reference instance variables unless its essential for clarity.
 
 ```
 public void setValue(String value){
@@ -629,7 +631,7 @@ public void setValue(String value){
 ```
 -
 
-There are times when you might want to call a constructor from inside of another constructor
+* There are times when you might want to call a constructor from inside of another constructor
 
 ```
 public class Superman( ){
@@ -650,7 +652,7 @@ public class Superman( ){
 -
 -
 
-#Initialization Blocks
+##Initialization Blocks
 
 * Its important to set the values of fields before we reference them. We use constructors to do that for instance fields, but what about class level or static fields?
 
@@ -698,7 +700,7 @@ public class Superman( ){
 -
 -
 
-#Packages
+##Packages
 * A **namespace** is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries.
 
 -
