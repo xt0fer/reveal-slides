@@ -1,6 +1,12 @@
 #Introduction to Object-Oriented Programming
+-
+-
 
-* Yesterday you had a lecture on procedural programming, which has its place in the world. The issue the bigger the problems get, the harder it is to manage the code base. 
+* Yesterday you had a lecture on procedural programming, which has its place in the world. The issue the bigger the problems get, the harder it is to manage the code base.
+
+-
+
+
 
 * Breaking the problem down into small logical objects that have a single responsibility is an easier way of managing larger problems, and scalability of solutions over time.
 * It is also allows for greater testability of code.
@@ -8,33 +14,53 @@
 -
 -
 # Classes
-A class is a blueprint or a template for an object. Consider a blind person, the only way they can comprehend what something looks like , is via a verbal description. The computer knows the shape or composition of an object via its class definition.
+*  A class is a blueprint or a template for an object. Consider a blind person, the only way they can comprehend what something looks like , is via a verbal description. The computer knows the shape or composition of an object via its class definition.
 
 -
 -
 # Encapsulation
-*Encapsulation* - encapsulation is simply combining data and behavior in one package and hiding the implementation details from the users of the objects.
+* *Encapsulation* - encapsulation is simply combining data and behavior in one package and hiding the implementation details from the users of the objects.
 
 -
 
 ##Objects are services
 
-Object oriented programming objective is having objects providing services to other objects via messages or their public methods.
+*  Object oriented programming objective is having objects providing services to other objects via messages or their public methods.
 
 -
 
 ##Single Responsibility
 
 * How an object completes the task that it is asked to do is no ones business but its own. The only thing that asking object cares about is the correct answer, how that answer is generated is irrelevant. Single Responsibility.
+
+-
+
+##Single Responsibility
+
 * Think about a printer in an office. Do you care how the printer works, or do you only care about the documents you asked it to make? Its not your job to print the documents, so you don’t need to or care about how its done. Only that it gets done.
+
+-
+##Single Responsibility
+
 * Thats the major premise behind encapsulation,  how an implements the tasked asked of it, is on a need to know basis.
 
+-
 -
 
 ##Defense
     
 * Encapsulation is also important in defensive programming.  Object methods should only be able to change and interact with field objects of the same class they belong to. This way you can control the probability of unintended bugs in the future.
+
+-
+
+##Defense
+
 * If a object needs to change the value of a field in another object, it should ask to do so via a method.
+
+-
+
+##Defense
+
 * The value of this is you have the flexibility of changing how a class produces or implements an action, without directly effecting the other classes in the program. It also allows for you to write clear and comprehensive test for every intended action that object could be expected to do.
 
 -
@@ -55,51 +81,80 @@ As stated before all objects have 3 major parts
 -
 
 #Relationships between Classes
+
 * **Dependence** (“Uses-a”) - Think about the objects a class needs to complete its job. 
-	* Objects are containers. 
-   * Think about this scenario you have a time keeping application that has the following objects (Employee, TimeCard, TimeClock). 
-        * For the TimeCard object to function properly it needs the TimeClock object to be created and in scope.
-        * Employee and TimeClock can exist and function without knowledge of TimeCard.
-      
+
 -
+
+#Relationships between Classes
+
+* Objects are containers. 
+
+* Think about this scenario you have a time keeping application that has the following objects (Employee, TimeCard, TimeClock). 
+
+-
+
+#Relationships between Classes
+
+* For the TimeCard object to function properly it needs the TimeClock object to be created and in scope.
+
+* Employee and TimeClock can exist and function without knowledge of TimeCard.
+
+-
+-
+
 ##Aggregation
 * **Aggregation** (“has-a”) - the objects that are contained inside the class
-    * Programs by nature should avoid complexity, keep things as simple as possible. 
-    * The objects that you create, and the objects that you use should have a SINGLE-RESPONSIBLITY. They should have one task to do, and do it well.
-    * Complexity is achieved by creating container classes, which are comprised of simple objects working together to achieve one objective.
+
+-
+
+###Aggregation
+
+* Programs by nature should avoid complexity, keep things as simple as possible. 
+    
+* The objects that you create, and the objects that you use should have a SINGLE-RESPONSIBLITY. They should have one task to do, and do it well.
+
+* Complexity is achieved by creating container classes, which are comprised of simple objects working together to achieve one objective.
 
 -
 ##Inheritance
 * **Inheritance** (“is-a”) - this relationship is polymorphic in nature this relationship talks about what the object is extended from
-    * Remember that all objects in java are extended from Object.class except for primitives.
+
+* Remember that all objects in java are extended from **Object.class** except for primitives.
 
 -
 -
 
 #Objects and Object Variables
-The **new**  keyword is the magic word that tells the JVM to add a new object to the heap.
+* The **new**  keyword is the magic word that tells the JVM to add a new object to the heap.
 
 -
+
+###Objects and Object Variables
 
 Your job as a program is to avoid NULL values. OOP is all about Objects talking to Objects by sending messages to each other. Null means that there is a message being sent to an object that doesn’t exist, and that will lead to a error.
 
 -
-##Constructors
-Constructors - the do not have a TYPE they just have a name which is the same as the class name.
 
-* public CustomClass( )
-* A constructor has the same name as the class
-* A Class can have more than one constructor.
-* A constructor has no return value
-* A constructor is always called with the new keyword
+###Constructors
+* **Constructors** - the do not have a TYPE they just have a name which is the same as the class name.
+
+	* public CustomClass( )
+	* A constructor has the same name as the class
+	* A Class can have more than one constructor.
+	* A constructor has no return value
+	* A constructor is always called with the new keyword
 
 -
 
 # Mutator and Accessor
 * A **Mutator** is an action or method that changes the STATE of a object
-    * This can be a dangerous event, because if other objects have a dependency on that object, and things are changed unexpectedly or unintentionally this could lead to false results.
+
+* This can be a dangerous event, because if other objects have a dependency on that object, and things are changed unexpectedly or unintentionally this could lead to false results.
 
 -
+
+###Mutator and Accessor
 
 * **Accessors** - are the privileges we assign to field objects , methods, and functions we define in our classes. 
     * Public
@@ -116,6 +171,8 @@ Constructors - the do not have a TYPE they just have a name which is the same as
     * **Explicit** - stated clearly and in detail, leaving no room for confusion or doubt. 
  
 -
+
+###Implicit and Explicit Parameters
 ```
 Public Class SpiderMan extends Hero {
     
@@ -132,7 +189,9 @@ Public Class SpiderMan extends Hero {
 ```
 
 -
-   Lets look at the method *shootWebAtTarget( )* . This method has two parameters and Implicit parameter which is SpiderMan object.
+###Implicit and Explicit Parameters
+
+* Lets look at the method ***shootWebAtTarget( )*** . This method has two parameters and Implicit parameter which is SpiderMan object.
 
 * The SpiderMan object is not explicitly called , but is implied by the compiler when this program is executed. 
 * The target object is explicitly stated parameter which has to be stated each time the method is called.
@@ -154,16 +213,17 @@ Public Class SpiderMan extends Hero {
 * Dollar
 
 -
-
+###Single-Responsiblity
 The User object would like to withdraw 100 dollars from his/her account. This should only be allowed if the UserAccount associated with that User has more than or equal to 100 Dollars in it.
 
 -
 
+###Single-Responsiblity
 If it was up to the User , they would take the 100 dollars even if their account did not have the amount in it. It would be awesome if we lived in a world that everyone could get what they wanted when they wanted it. Yet we don't. The User should not be allowed to take what ever they wanted, they should only be able to ASK for it.
 
 -
 
-##So who should the User ask for the Money?
+###So who should the User ask for the Money?
 
 * Bank ???
 * UserAccount ???
@@ -171,9 +231,13 @@ If it was up to the User , they would take the 100 dollars even if their account
 
 -
 
+###So who should the User ask for the Money?
+
 It makes the most sense for the User to Ask the Bank for the money. Even though the UserAccount is Dependent on the User object, the User object is not Dependent on the UserAccount. So since its not dependent on it, it has no reason to know it even exist. In the real world the User would ask the Bank or the Automated Teller Machine at the bank for money.
 
 -
+
+###So who should the User ask for the Money?
 
 For the Bank to decide if they can provide the User with the money the User is asking for, it is Dependent on the UserAccount object. The Bank must ask the UserAccount object if there is enough money in it.
  
@@ -182,14 +246,21 @@ For the Bank to decide if they can provide the User with the money the User is a
 * The bank will ask the UserAccount for how much money is available.
 * The UserAccount will have the amount of Dollars stored in it. 
 
+-
+
+###So who should the User ask for the Money?
+
 If this field is public and any object can have access to it, whats to stop the User object for simply changing the value of Dollars in their account??
 
 -
+
 ##Encapsulation
 
 **Encapsulation** comes in here! The field inside of UserAccount called dollars will be set to private. Only the UserAccount will have access to Mutate that field and change the amount. **SINGLE RESPONSIBILITY**. 
 
 -
+
+###Encapsulation
 
 When something goes wrong, and only one object has the ability to change or MUTATE the fields, finding out who is responsible and where the error exist becomes extremely fast.
 
@@ -202,6 +273,8 @@ When something goes wrong, and only one object has the ability to change or MUTA
 * Functions should have a **SINGLE RESPONSIBILITY** (have you heard that term enough?) 
 
 -
+
+###Private Methods
 ```
 public String canIBorrowMoney(Person person, Double amount ){
     // First Action 
@@ -226,6 +299,8 @@ public String canIBorrowMoney(Person person, Double amount ){
 
 -
 
+###Private Methods
+
 The problem with this function is we can’t test it, its doing too much!
 
 * So how do we fix it?
@@ -233,6 +308,9 @@ The problem with this function is we can’t test it, its doing too much!
 * We make them private because they only exist to help us answer the one question our interface is making available, *canIBorrowMoney(~)*.
 
 -
+
+###Private Methods
+
 ```
 private void doIKnowYou(Person person){
     if (!this.person.equals(person)){
