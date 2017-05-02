@@ -32,7 +32,7 @@ All enumerated types are subclasses of the class Enum. They inherit a number of 
 
 `Size.SMALL.toString()`
 
-conversly
+conversely
 
 `Size s = Enum.valueOf(Size.class, "SMALL");`
 
