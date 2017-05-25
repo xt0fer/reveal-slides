@@ -61,6 +61,16 @@ Both resize automatically (unlike Arrays).
 Sets are often used to test for membership using the `contains()` method
 
 -
+### Queues, Dequeues, and Stacks
+
+- Queue -- Adds elements to one end and removes from the other (FIFO)
+- Stack -- Adds elements to one end and removes them from the same (LIFO)
+- Dequeue -- "double-ended queue" adds and removes elements at both ends
+
+Note: `Dequeue` is often used for stacks as well
+
+
+-
 ## Map types
 
 - TreeMap - Keeps keys in insertion order
@@ -80,7 +90,7 @@ Sets are often used to test for membership using the `contains()` method
 
 -
 -
-
+## Collections Framework Part 2
 
 -
 -
