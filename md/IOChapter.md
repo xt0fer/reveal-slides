@@ -135,8 +135,9 @@ Note: second argument is an optional classloader for locating providers
 ```Java
 Path zipPath = Paths.get("archive.zip");
 URI uri = new URI("jar", zipPath.toUri().toString(), null);
+Map<String, String> env = Collections.singletonMap("create", "true");
 
-try (FileSystem fs = FileSystems.newFileSystem(uri, Collections.singletonMap("create", "true"));){
+try (FileSystem fs = FileSystems.newFileSystem(uri, env);){
   Files.copy(fromPath, fs.getPath("/").resolve(toPath));
 }
 ```
@@ -150,12 +151,12 @@ try (FileSystem fs = FileSystems.newFileSystem(uri, Collections.singletonMap("cr
 
 Call `openConnection` on a `URL` object eg:
 
-`URLConnection conn = url.openConnection()`
+`URLConnection conn = url.openConnection();`
 
 -
 ### Set request properties
 
-`connection.setRequestProperty("Accept-Charset", "UTF-8, ISO-8859-1, SMOKE-SIGNALS")`
+`connection.setRequestProperty("Accept-Charset", "UTF-8, ISO-8859-1, SMOKE-SIGNAL")`
 
 -
 ### Sending data to a URLConnection
@@ -176,7 +177,7 @@ Call `connection.setDoOutput(true)` and then write to `connection.getOutputStrea
 - Serialization is safe if all instance variables are primitives, enums, or other Serializable objects
 - Collections are Serializable if their elements are.
 
-Shared references to a serialized object must match after deserialization
+Note: Shared references to a serialized object must match after deserialization
 
 -
 ### transient modifier
@@ -190,7 +191,8 @@ Shared references to a serialized object must match after deserialization
 ```Java
 public class Student implements Serializable{
   private List<TestScore> testScores;
-  private transient GradeStats gradeStats; // calculated from testScores
+  // calculated from testScores
+  private transient GradeStats gradeStats;
 
   public GradeStats getStats(){
     if(gradeStats == null){
@@ -205,13 +207,18 @@ public class Student implements Serializable{
 ### Customizing serialization behavior
 
 - Override default serialization behavior with:
-  - `private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException` and
-  - `private void writeObject(ObjectOutputStream out) throws IOException`
+  - `readObject(ObjectInputStream in)` and
+  - `writeObject(ObjectOutputStream out)`
 - prevents automatic serialization of instance variables.
+- No need to manage superclass instance variables, only `this`
 
-`readObject()` and `writeObject()` only need to deal with their own instance variables, not those of the superclass
+-
+### Full Signatures
 
+- `private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException`
+- `private void writeObject(ObjectOutputStream out) throws IOException`
 
+-
 ### `readResolve()` and `writeReplace()`
 
 - very rare, but allows you to serialize a proxy object (returned by `writeReplace()`) instead of the actual object
