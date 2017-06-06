@@ -130,16 +130,91 @@ Stream<Path> entries = Files.walk(fs.getPath("/"));
 Note: second argument is an optional classloader for locating providers
 
 -
--
+#### Writing to ZIP archives
 
--
--
+```Java
+Path zipPath = Paths.get("archive.zip");
+URI uri = new URI("jar", zipPath.toUri().toString(), null);
 
+try (FileSystem fs = FileSystems.newFileSystem(uri, Collections.singletonMap("create", "true"));){
+  Files.copy(fromPath, fs.getPath("/").resolve(toPath));
+}
+```
 
 -
 -
 ## URL Connections
 
 -
+### Get a URLConnection
+
+Call `openConnection` on a `URL` object eg:
+
+`URLConnection conn = url.openConnection()`
+
+-
+### Set request properties
+
+`connection.setRequestProperty("Accept-Charset", "UTF-8, ISO-8859-1, SMOKE-SIGNALS")`
+
+-
+### Sending data to a URLConnection
+
+Call `connection.setDoOutput(true)` and then write to `connection.getOutputStream()`
+
+-
+### Caveats
+
+- URLConnection class automatically sets `application/x-www-form-urlencoded` content type.
+- name/value pairs in urls must be manually encoded using `URLEncoder.encode()`
+
+-
 -
 ## Serialization
+
+- Classes must implement `Serializable` to be serialized
+- Serialization is safe if all instance variables are primitives, enums, or other Serializable objects
+- Collections are Serializable if their elements are.
+
+Shared references to a serialized object must match after deserialization
+
+-
+### transient modifier
+
+- marks instance variables that shouldn't be serialized
+- Usually used on derived values or non-`Serializable` values
+
+-
+#### transient example
+
+```Java
+public class Student implements Serializable{
+  private List<TestScore> testScores;
+  private transient GradeStats gradeStats; // calculated from testScores
+
+  public GradeStats getStats(){
+    if(gradeStats == null){
+      gradeStats = new GradeStats(testScores);
+    }
+    return GradeStats;
+  }
+}
+```
+
+-
+### Customizing serialization behavior
+
+- Override default serialization behavior with:
+  - `private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException` and
+  - `private void writeObject(ObjectOutputStream out) throws IOException`
+- prevents automatic serialization of instance variables.
+
+`readObject()` and `writeObject()` only need to deal with their own instance variables, not those of the superclass
+
+
+### `readResolve()` and `writeReplace()`
+
+- very rare, but allows you to serialize a proxy object (returned by `writeReplace()`) instead of the actual object
+- (for highly controlled initialization -- constructors are not normally called during deserialization).
+- Proxy object must construct and return the desired original object in the `readResolve()` method.
+- Useful for database-managed objects and was used for singletons prior to `enums`
