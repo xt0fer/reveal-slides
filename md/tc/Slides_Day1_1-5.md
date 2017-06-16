@@ -242,8 +242,9 @@ public class Constants {
     public static void main(String[] args) {
         final double CM_PER_INCH = 2.54;
         double paperWidth = 8.5;
-        double paperHeight = 11; System.out.println("Paper size in centimeters: "
-            + paperWidth * CM_PER_INCH + " by " + paperHeight * CM_PER_INCH);
+        double paperHeight = 11;
+				System.out.println("Paper size in centimeters: "
+          + paperWidth * CM_PER_INCH + " by " + paperHeight * CM_PER_INCH);
     }
 }
 ```
@@ -290,14 +291,13 @@ The Math class contains an assortment of mathematical functions that you may occ
 
 ```
 double x = 4;
-double y = Math.sqrt(x); System.out.println(y); // prints 2.0
+double y = Math.sqrt(x);
+System.out.println(y); // prints 2.0
+
+double y = Math.pow(x, a);
 ```
 
 -
-
-```
-double y = Math.pow(x, a);
-```
 
 The Math class supplies the usual trigonometric functions:
 
@@ -345,7 +345,8 @@ When two values are combined with a binary operator (such as n + f where n is an
 Conversions in which loss of information is possible are done by means of casts.
 
 ```
-double x = 9.997; int nx = (int) x;
+double x = 9.997;
+int nx = (int) x;
 ```
 
 ```
