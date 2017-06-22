@@ -69,7 +69,9 @@ new int[] { 17, 19, 23, 29, 31, 37 }
 ```
 smallPrimes = new int[] { 17, 19, 23, 29, 31, 37 };
 //is shorthand for
-int[] anonymous = { 17, 19, 23, 29, 31, 37 }; smallPrimes = anonymous;
+int[] anonymous = { 17, 19, 23, 29, 31, 37 };
+
+smallPrimes = anonymous;
 ```
 
 ###Array Copying
@@ -183,7 +185,7 @@ for(int i = 0; i < 5; i++) {
 ###Wrapper Classes
 A wrapper class is, essentially, the Object representation of the primitive type.<br/>
 They also, sometimes, have helpful methods and class constants within them that the primitives don't.<br/>
-For example, Integer has a 
+For example, Integer has a
 
 > public static String toBinaryString(int i)
 
@@ -248,20 +250,20 @@ Look into the ArrayList and Arrays APIs to see what methods they have available.
 public class Example {
 
   public static void main(String[] args) {
-  
+
     int[] arr = {1, 2, 3, 4, 5};
     int[] doubledArr = new int[arr.length];
-    
+
     for(int i = 0; i < arr.length; i++) {
       doubledArr[i] = arr[i] * 2;
     }
-    
+
     int[] quadArr = new int[arr.length];
-    
+
     for(int i = 0; i < arr.length; i++) {
       quadArr[i] = doubledArr[i] * 2;
     }
-    
+
     for(int item : quadArr) {
       System.out.println(item);
     }
