@@ -24,6 +24,5 @@ public class Foo{
 ### final pitfalls
 
 - final object references cannot be changed but the underlying object can  
-- private methods are implicitly final
 - blank final fields must be initialized in every constructor
 - `final` != `finally` -- these are two different keywords
