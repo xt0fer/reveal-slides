@@ -17,7 +17,7 @@ public class FirstSample {
 - Java is case sensitive
 - Class names must begin with a letter, and after that, they can have any combination of letters and digits
 - You cannot use a Java reserved word
-- You need to make the  le name for the source code the same as the name of the public class
+- You need to make the file name for the source code the same as the name of the public class
 - whitespace is irrelevant to the Java compiler
 
 -
@@ -62,7 +62,7 @@ public class FirstSample {
 
 ##Data Types
 
-Java is a strongly typed language and every variable must have a declared type.
+Java is a strongly-typed language, and every variable must have a declared type.
 
 -
 
@@ -94,7 +94,7 @@ The integer types are for numbers without fractional parts.
 
 ###Floating-Point Types
 
-The foating-point types denote numbers with fractional parts
+The floating-point types denote numbers with fractional parts
 
 | Type   | Storage requirments | Range (Inclusive)                                              |
 | ------ |:------------------- | :------------------------------------------------------------- |
@@ -125,14 +125,14 @@ Values of type char can be expressed as hexadecimal values that run from \u0000 
 
 ###The boolean Type
 
-The boolean type has two values, false and true.
+The boolean type has two values: false and true.
 
 -
 -
 
 ##Variables
 
-In Java, every variable has a type. You declare a variable by placing the type  rst, followed by the name of the variable.
+In Java, every variable has a type. You declare a variable by placing the type first, followed by the name of the variable.
 
 ```
 double salary;
@@ -155,7 +155,7 @@ int i, j; // both are integers
 
 ###Initializing Variables
 
-After you declare a variable, you must explicitly initialize it by means of an as- signment statement—you can never use the value of an uninitialized variable.
+After you declare a variable, you must explicitly initialize it by means of an assignment statement—you can never use the value of an uninitialized variable.
 
 ```
 int vacationDays;
@@ -228,7 +228,7 @@ The usual arithmetic operators
 | %               | Modulus        |
 
 
-The / operator denotes integer division if both arguments are integers, and  foatingpoint division otherwise.
+The / operator denotes integer division if both arguments are integers, and  floating-point division otherwise.
 
 -
 
@@ -281,7 +281,7 @@ float f = n; // f is 1.23456792E8
 
 ###Casts
 
-When two values are combined with a binary operator (such as n + f where n is an integer and f is a  oating-point value), both operands are converted to a common type before the operation is carried out.
+When two values are combined with a binary operator (such as n + f where n is an integer and f is a floating-point value), both operands are converted to a common type before the operation is carried out.
 
 - If either of the operands is of type double, the other one will be converted to a double.
 - Otherwise, if either of the operands is of type float, the other one will be converted to a float.
@@ -290,7 +290,7 @@ When two values are combined with a binary operator (such as n + f where n is an
 
 -
 
-Conversions in which loss of infor- mation is possible are done by means of casts.
+Conversions in which loss of information is possible are done by means of casts.
 
 ```
 double x = 9.997; int nx = (int) x;
@@ -451,7 +451,7 @@ String greeting = "Hello";
 String s = greeting.substring(0, 3);
 ```
 
-The second parameter of substring is the  rst position that you do not want to copy.
+The second parameter of substring is the first position that you do not want to copy.
 
 -
 
@@ -466,7 +466,7 @@ String message = expletive + PG13;
 
 -
 
-When you concatenate a string with a value that is not a string, the latter is con- verted to a string.
+When you concatenate a string with a value that is not a string, the latter is converted to a string.
 
 ```
 int age = 13;
@@ -489,7 +489,7 @@ The String class gives no methods that let you change a character in an existing
 greeting = greeting.substring(0, 3) + "p!";
 ```
 
-Since you cannot change the individual characters in a Java string, the documen- tation refers to the objects of the String class as immutable.
+Since you cannot change the individual characters in a Java string, the documentation refers to the objects of the String class as immutable.
 
 -
 
@@ -560,7 +560,7 @@ String completedString = builder.toString();
 
 ###Reading Input
 
-To read console input, you  rst construct a Scanner that is attached to System.in
+To read console input, you first construct a Scanner that is attached to System.in
 
 ```
 Scanner in = new Scanner(System.in);
@@ -579,7 +579,7 @@ System.out.print("How old are you? ");
 int age = in.nextInt();
 ```
 
-Similarly, the nextDouble method reads the next  oating-point number.
+Similarly, the nextDouble method reads the next floating-point number.
 
 -
 
@@ -606,13 +606,13 @@ prints x with a  eld width of 8 characters and a precision of 2 characters.
 ```
 System.out.printf("Hello, %s. Next year, you'll be %d", name, age);
 ```
-Each of the format speci ers that start with a % character is replaced with the corre- sponding argument. The conversion character that ends a format speci er indicates the type of the value to be formatted
+Each of the format specifiers that start with a % character is replaced with the corresponding argument. The conversion character that ends a format speci er indicates the type of the value to be formatted
 
 [Conversions for printf](http://alvinalexander.com/programming/printf-format-cheat-sheet)
 
 -
 
-In addition, you can specify  ags that control the appearance of the formatted output.
+In addition, you can specify flags that control the appearance of the formatted output.
 
 ```
 System.out.printf("%,.2f", 10000.0 / 3.0); // 3,333.33
@@ -631,7 +631,7 @@ String message = String.format("Hello, %s. Next year, you'll be %d", name, age);
 
 ###File Input and Output
 
-To read from a  le, construct a Scanner object
+To read from a file, construct a Scanner object
 
 ```
 Scanner in = new Scanner(Paths.get("myfile.txt"), "UTF-8");
@@ -646,7 +646,7 @@ To write to a file, construct a PrintWriter object.
 PrintWriter out = new PrintWriter("myfile.txt", "UTF-8");
 ```
 
-If the  le does not exist, it is created.
+If the file does not exist, it is created.
 
 -
 
@@ -839,7 +839,7 @@ while (sum < goal)
 
 ##Big Numbers
 
-If the precision of the basic integer and  oating-point types is not suf cient, you can turn to a couple of handy classes in the java.math package: BigInteger and BigDecimal.
+If the precision of the basic integer and floating-point types is not suf cient, you can turn to a couple of handy classes in the java.math package: BigInteger and BigDecimal.
 
 ```
 BigInteger a = BigInteger.valueOf(100);
