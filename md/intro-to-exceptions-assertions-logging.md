@@ -383,7 +383,7 @@ public class FilePrinterTest {
 -
 #Purpose
 * When code throws an exception, it stops processing the remaining code in the scope, then exits the method.
-* If the method has aqcuired some local resource, then this can become an issue; The program will cease execution, and hold the resource indefinitely.
+* If the method has acquired some local resource, then this can become an issue; The program will cease execution, and hold the resource indefinitely.
 * The finally clause executes whether or not an exception was code.
 
 -
