@@ -13,7 +13,7 @@ A method whose signature is defined, but implementation is not
 abstract class Worker{
 
   // All workers can doWork, but some do it differently than others
-  public WorkProduct doWork();
+  public abstract WorkProduct doWork();
 }
 
 ```
