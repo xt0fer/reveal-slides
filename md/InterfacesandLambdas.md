@@ -1,9 +1,9 @@
-# 6.1 Interfaces
+o# 6.1 Interfaces
 * **interface** - an interface is not a class but a set of requirements for the classes that want to conform to the interface.
 * The interface is a contract or a promise for the classes implementing it agrees to respond to.
 * All methods of an interface are default **public**
 * Implements keyword is you to declare that a class is using a interface
-* To implement an interface you must carry out two steps
+* To implement an interface, you must carry out two steps
 
 
 -
@@ -44,18 +44,18 @@ public class RandomQuote implements SmartQuotes{
 ```
 -
 * **Interface Comparable\<T\>**
-  * **Java Comparable** interface is used to order the objects of user-defined class.This interface is found in java.lang package and contains only one method named compareTo(Object). It provide single sorting sequence only i.e. you can sort the elements on based on single data member only. For example it may be rollno, name, age or anything else.
+  * **Java Comparable** interface is used to order the objects of user-defined class. This interface is found in the **java.lang** package and contains only one method named **compareTo(Object)**. It provides single sorting sequence only, i.e. you can sort the elements on based on single data member only. For example it may be rollno, name, age or anything else.
 
 -
 
-  * Classes provided most often will provide you **compareTo** method to allow them to be sorted for example **Class String**
+  * Classes provided will most often provide you **compareTo** method to allow them to be sorted, such as **Class String**
 
 ```
 public int compareTo(String anotherString)
 ```
 
 -
-* For the custom classes that we create, if we intend on giving users the ability to sort them , we need to have our class implement Comparable\<T\> , so that sorting methods know how to evaluate them.
+* For the custom classes that we create, if we intend on giving users the ability to sort them , we need to have our class implement **Comparable\<T\>** , so that sorting methods know how to evaluate them.
 
 -
 ```
@@ -96,7 +96,7 @@ public class Saiyan implements Comparable<Saiyan>
 
 * Interfaces are not classes, you can never instantiate a interface.
 * You can not instantiate a Interface, but you can declare a variable of type interface.
-  * As long as the object implements the interface you can assign it to that reference.
+  * As long as the object implements the interface, you can assign it to that reference.
 
 -
 
@@ -129,8 +129,8 @@ public Groot implements GuardainOfGalaxy {
 ```
 -
 
-* You can create reference and assign it the Type of a Interface, but you can not create an object of that type.
-* You can however make that reference point to any object that **implements ** that interface. This is possible because of polymorphism.
+* You can create a reference and assign it the Type of a Interface, but you cannot create an object of that type.
+* You can, however make that reference point to any object that **implements ** that interface. This is possible because of polymorphism.
 
 -
 
@@ -149,8 +149,8 @@ public class Guardians {
 -
 ## Interface and Abstract Classes
 
-* A class can only extend a single class, there will be times when you would like to apply multiple inheritance to a class.
-* This can be accomplished via implements.
+* A class can only extend a single class, as there will be times when you would like to apply multiple inheritance to a class.
+* This can be accomplished via **implements**.
 * Interfaces are polymorphic
 
 -
@@ -176,12 +176,12 @@ public class IronMan extends Avengers , GuardianOfGalaxy{ // Error
 }
 ```
 -
-* In Java an object can only extend from one type to keep inheritance in check and easy to manage.
+* In Java, an object can only extend from one type to keep inheritance in check and easy to manage.
 * Objects can however implement as many Interfaces as they would like.
 
 -
 ```
-public interface GuardainOfGalaxy {
+public interface GuardianOfGalaxy {
     Double attackEnemy(Enemy enemy);
     
     String battleCry();
@@ -199,7 +199,7 @@ public class IronMan implements Avengers, GuardianOfGalaxy{...}
 
 ##Static Methods
 
-* For simple implementations , or default implementations of static methods its okay to place them inside the interface. In older versions of Java this would not be allowed.
+* For simple implementations, or default implementations of static methods it's okay to place them inside the interface. In older versions of Java this would not be allowed.
 
 -
 
@@ -221,7 +221,7 @@ public interface GuardianFlight {
 -
 ##Default Methods
 
-* Using the keyword Default it is possible to supply default implementations for an interface that will be applied to the class.
+* Using the keyword **Default**, it is possible to supply default implementations for an interface that will be applied to the class.
 * Programmers that want to extend the method only need to use the **@Override** command
 
 -
@@ -248,8 +248,8 @@ public interface PowerUpItem {
 -
 ##6.1.6 Resolving Default Method Conflicts
 * There will be times when implementing two interfaces, they may have methods with the same name with a Default implementation.
-  * If the SuperClass provides a concert implementation the compiler will pick that execution.
-  * If there is not default concert implementation in the super class then the compiler will force you to explicitly state it:
+  * If the SuperClass provides a concert implementation, the compiler will pick that execution.
+  * If there is not default concert implementation in the super class, then the compiler will force you to explicitly state it:
     * Person.super.getName();
 
 -
@@ -287,7 +287,7 @@ public class Vision implements Mjolnir, CaptainAmericasShield {
 
 ## Interfaces and Callbacks
 
-* A callback method in java is a method that gets called when an event occurs. Usually you can implement that by passing an implementation of a certain interface to the system that is responsible for triggering the event E.
+* A callback method in Java is a method that gets called when an event occurs. Usually, you can implement that by passing an implementation of a certain interface to the system that is responsible for triggering the event E.
 
 -
 ```
