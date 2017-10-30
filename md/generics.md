@@ -73,7 +73,7 @@ double middle = ArrayAlg.getMiddle(3.14, 1729, 0)
 ```Java
 public static <T extends Comparable> T min(T[] a){...}
 ```
-When `extending` T must always be a subtype of it's bounding type.<br>
+When `extending` T must always be a subtype of its bounding type.<br>
 REMEMBER: if B extends A, that does NOT mean that T&lt;B> extends T&lt;A>
 -
 -
@@ -206,7 +206,7 @@ class MyNode extends Node {
 -
 -
 * No Arrays of parameterized types
-  * Remember, the compiiler will make these into Objects (or bounding type).  You pretty much always don't want this.
+  * Remember, the compiler will make these into Objects (or bounding type).  You pretty much always don't want this.
   * You can get around this with some wildcard magic.  But, like, don't.
   * You can, however, use `@SafeVarargs` for varargs.
 -
@@ -220,7 +220,7 @@ class MyNode extends Node {
 -
 * No generic arrays
   * Type erasure here will hurt you.  Casting from Objects or bounding types to the type you want probably isn't gonna work in your favor.
-  * Again, here's where you have a funciton that will take an array constructor expression, kind of like instantiating type variables.
+  * Again, here's where you have a function that will take an array constructor expression, kind of like instantiating type variables.
   * Or, call `Array.newInstance`
 -
 -
@@ -231,7 +231,7 @@ class MyNode extends Node {
 -
 -
 # Reflection
-You can, in fact, leverage reflection to find out about an Object's generic past.  This is all at runtime, though.  So, in all reality, you can see what's happening and where Objects came from, but know that as far as the compiler is concerned, they don't really matter.  Like, they've functinonally been erased, but there is still a record.
+You can, in fact, leverage reflection to find out about an Object's generic past.  This is all at runtime, though.  So, in all reality, you can see what's happening and where Objects came from, but know that as far as the compiler is concerned, they don't really matter.  Like, they've functionally been erased, but there is still a record.
 
 
 

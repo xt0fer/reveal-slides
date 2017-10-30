@@ -6,7 +6,7 @@
 -
 ### DI in Spring
 
-The Spring Framework IoC (Inversion of Control) container handles Dependency Injection by registering (learning about) spring beans and providing them to satisfy dependencies as needed.
+The Spring Framework IoC (Inversion of Control) container handles Dependency Injection by registering (learning about) Spring beans and providing them to satisfy dependencies as needed.
 
 -
 ### @Configuration
