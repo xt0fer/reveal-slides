@@ -8,14 +8,14 @@ An instance of type T can be replaced by an instance of type S if S is a subtype
 -
 ## Polymorphic Program design
 
-- Most methods rely on provided interfaces, rather than underlying implementations
-- Object fields are accessed through getters/setters
+<p class="fragment fade-up">- Most methods rely on provided interfaces, rather than underlying implementations</p>
+<p class="fragment fade-up">- Object fields are accessed through getters/setters</>
 
 -
 ### Things that don't behave polymorphically
 
-- field accesses (eg: `Parent p = new Child(); p.x;`)
-- Static methods
+<p class="fragment fade-up">- field accesses (eg: `Parent p = new Child(); p.x;`)</p>
+<p class="fragment fade-up">- Static methods</p>
 
 -
 
