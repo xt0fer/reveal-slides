@@ -2,7 +2,7 @@ o# 6.1 Interfaces
 * **interface** - an interface is not a class but a set of requirements for the classes that want to conform to the interface.
 * The interface is a contract or a promise for the classes implementing it agrees to respond to.
 * All methods of an interface are default **public**
-* Implements keyword is you to declare that a class is using a interface
+* Implements keyword is you to declare that a class is using an interface
 * To implement an interface, you must carry out two steps
 
 
@@ -94,8 +94,8 @@ public class Saiyan implements Comparable<Saiyan>
 -
 ##6.1.2 Properties of Interface
 
-* Interfaces are not classes, you can never instantiate a interface.
-* You can not instantiate a Interface, but you can declare a variable of type interface.
+* Interfaces are not classes, you can never instantiate an interface.
+* You can not instantiate an Interface, but you can declare a variable of type interface.
   * As long as the object implements the interface, you can assign it to that reference.
 
 -
@@ -103,7 +103,7 @@ public class Saiyan implements Comparable<Saiyan>
 ```
 package io.zipcoder.Marvel
 
-public interface GuardainOfGalaxy {
+public interface GuardianOfGalaxy {
     Double attackEnemy(Enemy enemy);
     
     String battleCry();
@@ -115,7 +115,7 @@ public interface GuardainOfGalaxy {
 ```
 package io.zipcoder.Marvel
 
-public Groot implements GuardainOfGalaxy {
+public Groot implements GuardianOfGalaxy {
   
   public Double attackEnemy(Enemy enemy){
      ...
@@ -129,7 +129,7 @@ public Groot implements GuardainOfGalaxy {
 ```
 -
 
-* You can create a reference and assign it the Type of a Interface, but you cannot create an object of that type.
+* You can create a reference and assign it the Type of an Interface, but you cannot create an object of that type.
 * You can, however make that reference point to any object that **implements ** that interface. This is possible because of polymorphism.
 
 -
@@ -156,7 +156,7 @@ public class Guardians {
 -
 
 ```
-public abstract GuardainOfGalaxy {
+public abstract GuardianOfGalaxy {
     Double attackEnemy(Enemy enemy);
     
     String battleCry();
