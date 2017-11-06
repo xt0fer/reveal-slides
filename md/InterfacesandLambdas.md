@@ -69,7 +69,7 @@ public int compareTo(String anotherString)
     // There is no way for this method to know how to sort these custom objects
     // by default unless this object implements Comparable.
     // Implementing Comparable tells the sort method that these objects can respond to
-    // the compartTo(T t) request.
+    // the comparetTo(T t) request.
     Arrays.sort(sayians);
     
     for (Sayian s: sayians)
@@ -230,13 +230,13 @@ public interface GuardianFlight {
 public interface PowerUpItem {
   
   /**
-   * Initially there is no item equiped to add this to a character
+   * Initially there is no item equipped to add this to a character
    * you would need to call this method to equip it
    **/
   public void equipPowerUpItem(Item item);
   
   /**
-   * If there is no power item equiped this method could still 
+   * If there is no power item equipped this method could still 
    * be called by any class.
    **/
   default Integer usePowerUpItemInAttack(){
