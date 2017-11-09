@@ -321,8 +321,8 @@ public class FilePrinterTest {
 	    } catch(Exception exception) {
 	        // handle all exceptions the same way
 	        exception.printStackTrace();
-	    } Isn't a number...");
-        } catch(IllegalArgumentException iae) {
+	    } //Isn't a number...");
+         catch(IllegalArgumentException iae) {
             iae.printStackTrace();
             
         }
