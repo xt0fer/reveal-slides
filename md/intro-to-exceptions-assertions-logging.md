@@ -85,7 +85,7 @@
 
 
 -
-#What is Exception Handling?
+###What is Exception Handling?
 <p class="fragment fade-up">* For exceptional situations, Java uses a form of error trapping called, _exception handling_.</p>
 <p class="fragment fade-up">* Exception handling enables the author of the code to record and handle errors in their program.</p>
 
