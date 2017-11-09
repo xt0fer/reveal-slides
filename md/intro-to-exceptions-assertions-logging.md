@@ -1,10 +1,10 @@
 #Exceptions, Assertions, Logging
-1. Throwable Class
-2. Basic Exception Handling
-3. Better Exception Handling
-4. Finally Keyword
-5. Assertions
-6. Logging
+<p class="fragment fade-up">1. Throwable Class</p>
+<p class="fragment fade-up">2. Basic Exception Handling</p>
+<p class="fragment fade-up">3. Better Exception Handling</p>
+<p class="fragment fade-up">4. Finally Keyword</p>
+<p class="fragment fade-up">5. Assertions</p>
+<p class="fragment fade-up">6. Logging</p>
 
 
 
@@ -41,27 +41,27 @@
 
 -
 #Errors
-* The `Error` hierarchy describes internal errors and resource exhaustion situations.
-* Do not advertise internal java errors; Any code can potentially throw an `Error`.
-* `IOError`, `StackOverflowError`, and `OutOfMemoryError` are a few of the commonly encountered `Errors`
-	* `IOError` - serious I/O error has occurred
-	* `StackOverflowError` - application recurses too deeply.
-	* `OutOfMemoryError` - JVM cannot allocate an object because it is out of memory
+<p class="fragment fade-up">* The `Error` hierarchy describes internal errors and resource exhaustion situations.</p>
+<p class="fragment fade-up">* Do not advertise internal java errors; Any code can potentially throw an `Error`.</p>
+<p class="fragment fade-up">* `IOError`, `StackOverflowError`, and `OutOfMemoryError` are a few of the commonly encountered `Errors`</p>
+<p class="fragment fade-up">	* `IOError` - serious I/O error has occurred</p>
+<p class="fragment fade-up">	* `StackOverflowError` - application recurses too deeply.</p>
+<p class="fragment fade-up">	* `OutOfMemoryError` - JVM cannot allocate an object because it is out of memory</p>
 
 
 -
 #Unchecked Exceptions
-* Any exception which derives from `Error` or `RuntimeException` class.
-* An Exception subclassing `RuntimeException` is considered to be the programmer's fault.
-	- `ArrayIndexOutOfBoundException` can be avoided by testing array index against array bounds
-	- `NullPointerException` can be avoided by testing for null values.
+<p class="fragment fade-up">* Any exception which derives from `Error` or `RuntimeException` class.</p>
+<p class="fragment fade-up">* An Exception subclassing `RuntimeException` is considered to be the programmer's fault.</p>
+<p class="fragment fade-up">	- `ArrayIndexOutOfBoundException` can be avoided by testing array index against array bounds</p>
+<p class="fragment fade-up">	- `NullPointerException` can be avoided by testing for null values.</p>
 
 
 -
 #Checked Exceptions
-* An Exception subclassing `IOException` is _potentially_ not the programmer's fault.
-	- `FileNotFoundException` can be thrown when trying to read from a remote file that a person incidentally removes.
-	- `SQLException` can be thrown as a result of a faulty network connection.
+<p class="fragment fade-up">* An Exception subclassing `IOException` is _potentially_ not the programmer's fault.</p>
+<p class="fragment fade-up">	- `FileNotFoundException` can be thrown when trying to read from a remote file that a person incidentally removes.</p>
+<p class="fragment fade-up">	- `SQLException` can be thrown as a result of a faulty network connection.</p>
 
 
 
@@ -86,8 +86,8 @@
 
 -
 #What is Exception Handling?
-* For exceptional situations, Java uses a form of error trapping called, _exception handling_.
-* Exception handling enables the author of the code to record and handle errors in their program.
+<p class="fragment fade-up">* For exceptional situations, Java uses a form of error trapping called, _exception handling_.</p>
+<p class="fragment fade-up">* Exception handling enables the author of the code to record and handle errors in their program.</p>
 
 -
 #<strike>Unchecked</strike> Unhandled Exception Example; Compile Error
@@ -198,11 +198,11 @@ class FilePrinter {
 
 -
 #Multi-Exception Handling
-* Consider the case where multiple exceptions may be thrown.
-* For example, in our `FilePrinter` class, the
+<p class="fragment fade-up">* Consider the case where multiple exceptions may be thrown.</p>
+<p class="fragment fade-up">* For example, in our `FilePrinter` class, the
 	- constructor throws a `FileNotFoundException`
-	- `printFile()` throws an `IOException`
-* What if we wanted to create a `FilePrinter` object, then print its contents?
+	- `printFile()` throws an `IOException`</p>
+<p class="fragment fade-up">* What if we wanted to create a `FilePrinter` object, then print its contents?</p>
 
 -
 #Multi-Exception Handling Examples
@@ -343,11 +343,11 @@ public class FilePrinterTest {
 
 -
 #Recursion <strike>and</strike> Exception Handling
-* DON'T DO IT!
-* Recursion and Exception Handling do not go together
-* Exceptions keep track of all pending method calls
-* By nature, recursion pends method calls `n` levels deep, where `n` is the recursive depth of the method call.
-* Combining recursion and exception handling can result in very strange `StackTraces`
+<p class="fragment fade-up">* DON'T DO IT!</p>
+<p class="fragment fade-up">* Recursion and Exception Handling do not go together</p>
+<p class="fragment fade-up">* Exceptions keep track of all pending method calls</p>
+<p class="fragment fade-up">* By nature, recursion pends method calls `n` levels deep, where `n` is the recursive depth of the method call.</p>
+<p class="fragment fade-up">* Combining recursion and exception handling can result in very strange `StackTraces`</p>
 
 
 
@@ -382,16 +382,16 @@ public class FilePrinterTest {
 
 -
 #Purpose
-* When code throws an exception, it stops processing the remaining code in the scope, then exits the method.
-* If the method has acquired some local resource, then this can become an issue; The program will cease execution, and hold the resource indefinitely.
-* The finally clause executes whether or not an exception was code.
+<p class="fragment fade-up">* When code throws an exception, it stops processing the remaining code in the scope, then exits the method.</p>
+<p class="fragment fade-up">* If the method has acquired some local resource, then this can become an issue; The program will cease execution, and hold the resource indefinitely.</p>
+<p class="fragment fade-up">* The finally clause executes whether or not an exception was code.</p>
 
 -
 #Conditions under which `finally` block is executed
-1. If no exception are thrown.
-2. If exception outside `try` block is thrown.
-3. If an exception is thrown in a `catch` clause.
-4. The program skips the `finally` clause, if the `catch` clause does not throw an exception.
+<p class="fragment fade-up">1. If no exception are thrown.</p>
+<p class="fragment fade-up">2. If exception outside `try` block is thrown.</p>
+<p class="fragment fade-up">3. If an exception is thrown in a `catch` clause.</p>
+<p class="fragment fade-up">4. The program skips the `finally` clause, if the `catch` clause does not throw an exception.</p>
 
 
 -
@@ -438,25 +438,25 @@ class BookExample {
 -
 -
 #Assertions
-* Assertions are commonly used idiom of defensive programming.
-* Java has a keyword `assert`, which takes two forms:
+<p class="fragment fade-up">* Assertions are commonly used idiom of defensive programming.</p>
+<p class="fragment fade-up">* Java has a keyword `assert`, which takes two forms:
 	1. `assert condition;`
-	2. `assert condition : expression;`
-* `assert` evaluates a condition, then throws an `AssertionError` if it is false. The second argument _expression_ is a message String.
+	2. `assert condition : expression;`</p>
+<p class="fragment fade-up">* `assert` evaluates a condition, then throws an `AssertionError` if it is false. The second argument _expression_ is a message String.</p>
 
 
 -
 #Toggling Assert Statements
-* By default, assertions are disabled; If an assert statement is passed `false`, no exception is thrown.
-* Assertions can be enabled by running the program with the `-ea` option.
-* `java -ea MyProject` enables for entire project
-* `java -ea:MyClass -ea:com.zipcodewilmington.MyProject` enables for `MyClass`
+<p class="fragment fade-up">* By default, assertions are disabled; If an assert statement is passed `false`, no exception is thrown.</p>
+<p class="fragment fade-up">* Assertions can be enabled by running the program with the `-ea` option.</p>
+<p class="fragment fade-up">* `java -ea MyProject` enables for entire project</p>
+<p class="fragment fade-up">* `java -ea:MyClass -ea:com.zipcodewilmington.MyProject` enables for `MyClass`</p>
 
 -
 #When To Use
-* Assertion failures are intended to be fatal, unrecoverable errors
-* Assertion checks are turned on only during development and testing
-* As an additional check against uncanny method returns.
+<p class="fragment fade-up">* Assertion failures are intended to be fatal, unrecoverable errors</p>
+<p class="fragment fade-up">* Assertion checks are turned on only during development and testing</p>
+<p class="fragment fade-up">* As an additional check against uncanny method returns.</p>
 
 
 
@@ -481,18 +481,18 @@ class BookExample {
 -
 -
 #Logging
-* It's common to use `System.out.println` to check against troublesome code.
-* Once the issue is resolved, these statements are usually removed, or commented out.
-* Later, if the issue persists, the print statements are re-inserted.
-* The Logging API is designed to overcome this issue.
+<p class="fragment fade-up">* It's common to use `System.out.println` to check against troublesome code.</p>
+<p class="fragment fade-up">* Once the issue is resolved, these statements are usually removed, or commented out.</p>
+<p class="fragment fade-up">* Later, if the issue persists, the print statements are re-inserted.</p>
+<p class="fragment fade-up">* The Logging API is designed to overcome this issue.</p>
 
 -
 #Principal advantages of Logging API
-* It's easy to (un)suppress all log records, or just those below a certain level.
-* Suppressed logs are inexpensive; The penalty for leaving them in your code is minimal.
-* Log records can be directed to different handlers; Console display, writing to file / database, etc.
-* Log records can be formatted; For example, plaint ext, or XML
-* Logging configuration is controlled by configuration file; Applications can replace this mechanism
+<p class="fragment fade-up">* It's easy to (un)suppress all log records, or just those below a certain level.</p>
+<p class="fragment fade-up">* Suppressed logs are inexpensive; The penalty for leaving them in your code is minimal.</p>
+<p class="fragment fade-up">* Log records can be directed to different handlers; Console display, writing to file / database, etc.</p>
+<p class="fragment fade-up">* Log records can be formatted; For example, plaint ext, or XML</p>
+<p class="fragment fade-up">* Logging configuration is controlled by configuration file; Applications can replace this mechanism</p>
 
 
 
@@ -524,4 +524,5 @@ public class LogDemo {
     }
 }
 ```
-
+-
+<img src = 'http://valsback.valsviews.com/wp-content/uploads/2017/01/Cute-Bunny-hungry.jpg'>
