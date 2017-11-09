@@ -114,7 +114,7 @@ class FilePrinter {
 ```
 
 -
-###Exception Handling; Signature Throw Clause
+###Exception Handling: Signature Throw Clause
 ```java
 import java.io.*;
 class FilePrinter {
@@ -135,7 +135,7 @@ class FilePrinter {
 ```
 
 -
-###Exception Handling; Try / Catch
+###Exception Handling: Try / Catch
 ```java
 import java.io.*;
 class FilePrinter {
@@ -198,11 +198,11 @@ class FilePrinter {
 
 -
 ###Multi-Exception Handling
-<p class="fragment fade-up">* Consider the case where multiple exceptions may be thrown.</p>
-<p class="fragment fade-up">* For example, in our `FilePrinter` class, the
+* Consider the case where multiple exceptions may be thrown:
+* For example, in our `FilePrinter` class, the
 	- constructor throws a `FileNotFoundException`
-	- `printFile()` throws an `IOException`</p>
-<p class="fragment fade-up">* What if we wanted to create a `FilePrinter` object, then print its contents?</p>
+	- `printFile()` throws an `IOException`
+* What if we wanted to create a `FilePrinter` object, then print its contents?
 
 -
 ###Multi-Exception Handling Examples
@@ -240,7 +240,7 @@ public class FilePrinterTest {
  
 
 -
-###Dynamic Exception Handling; Expanded
+###Dynamic Exception Handling: Expanded
 ```Java   
 public class FilePrinterTest {
 	private static final String invalidFileName = "";
@@ -263,7 +263,7 @@ public class FilePrinterTest {
 
 
 -
-###Dynamic Exception Handling; Compressed
+###Dynamic Exception Handling: Compressed
 ```Java   
 public class FilePrinterTest {
 	private static final String invalidFileName = "";
