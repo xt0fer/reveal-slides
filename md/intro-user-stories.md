@@ -87,7 +87,7 @@ Detail can be added to the given user story example by adding the following cond
 <p class="fragment fade-up">`Negotiable`: flexible as to what needs to be done to complete the objective </p>
 <p class="fragment fade-up">`Valuable`: provides value to the end-user, directs focus be more effectively implemented
 <p class="fragment fade-up">`Estimate-able`: specific enough to be estimated and planned by the team</p>
-<p class="fragment fade-up">`Small`: If a story that is too complicated and big, usually needs to be split into multiple stories.</p>
+<p class="fragment fade-up">`Small`: A story that is too complicated and big usually needs to be split into multiple stories.</p>
 <p class="fragment fade-up">`Testable`: Can be tested once completed to satisfaction</p>
 
 
