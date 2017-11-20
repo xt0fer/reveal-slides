@@ -50,8 +50,10 @@ Some examples of user stories are:
 ####Adding detail to user stories
 
 Detail can be added to user stories in two ways:
-By splitting a user story into multiple, smaller user stories.
-By adding “conditions of satisfaction.”
+
+<p class="fragment fade-up">-By splitting a user story into multiple, smaller user stories.</p>
+
+<p class="fragment fade-up">-By adding “conditions of satisfaction.”</p>
 
 
 -
@@ -62,7 +64,7 @@ Serve as a high-level acceptance test that will be true once user story is compl
 
 For example:
 
-As a vice president of marketing, I want to select a holiday season to be used when reviewing the performance of past advertising campaigns so that I can identify profitable ones.
+`As a` vice president of marketing, `I want to` select a holiday season to be used when reviewing the performance of past advertising campaigns `so that` I can identify profitable ones.` 
 
 
 
@@ -71,26 +73,22 @@ As a vice president of marketing, I want to select a holiday season to be used w
 ####Conditions of Satisfaction: adding detail
 
 Detail can be added to the given user story example by adding the following conditions:
-
--Make sure it works with major retail holidays: Christmas, Easter, President’s Day, Mother’s Day, Father’s Day, Labor Day, New Year’s Day.
-
--Support holidays that span two calendar years (none span three).
-
--Holiday seasons can be set from one holiday to the next (such as Thanksgiving to Christmas).
-
--Holiday seasons can be set to be a number of days prior to the holiday.
+* Make sure it works with major retail holidays: Christmas, Easter, President’s Day, Mother’s Day, Father’s Day, Labor Day, New Year’s Day.
+* Support holidays that span two calendar years (none span three).
+* Holiday seasons can be set from one holiday to the next (such as Thanksgiving to Christmas).
+* Holiday seasons can be set to be a number of days prior to the holiday.
 
 
 -
 -
 
 ####“INVEST" model:
-<p class="fragment fade-up">Independent: self-contained: makes sure that each user story is testable upon completion, and can be moved around<p>
-<p class="fragment fade-up">Negotiable: flexible as to what needs to be done to complete the objective </p>
-<p class="fragment fade-up">Valuable: must provide value to the end-user mentioned in the story, directs their focus be more effectively implemented
-<p class="fragment fade-up">Estimate-able: Story is small and specific enough to be estimated and planned by the team</p>
-<p class="fragment fade-up">Small: an extension of the ability to assess the effort necessary to complete the story, small and simple enough. If a story is too complicated and big, it usually needs to be split into multiple stories.</p>
-<p class="fragment fade-up">Testable: Can be tested once completed to satisfaction</p>
+<p class="fragment fade-up">`Independent`: self-contained- testable upon completion, and can be moved around<p>
+<p class="fragment fade-up">`Negotiable`: flexible as to what needs to be done to complete the objective </p>
+<p class="fragment fade-up">`Valuable`: provides value to the end-user, directs focus be more effectively implemented
+<p class="fragment fade-up">`Estimate-able`: specific enough to be estimated and planned by the team</p>
+<p class="fragment fade-up">`Small`: If a story that is too complicated and big, usually needs to be split into multiple stories.</p>
+<p class="fragment fade-up">`Testable`: Can be tested once completed to satisfaction</p>
 
 
 -
@@ -100,8 +98,8 @@ Detail can be added to the given user story example by adding the following cond
 <p class="fragment fade-up">-Define your requirements for a project</p>
 <p class="fragment fade-up">-Define your roles: (types of users) based on the characteristics of the users and the permissions(abilities)</p>
 <p class="fragment fade-up">-Break your requirements into user stories
-- List separate deliverables as tasks
-- Define Acceptance Criteria
+* List separate deliverables as tasks
+* Define Acceptance Criteria
 </p>
 
 
