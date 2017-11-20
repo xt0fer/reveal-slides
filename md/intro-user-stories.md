@@ -24,7 +24,7 @@
 
 A user story is often written in the following format:
 
-As a <role>, I want <feature> so that <reason>.
+As a &lt;role&gt;, I want &lt;feature&gt; so that &lt;reason&gt;.
 
 
 -
