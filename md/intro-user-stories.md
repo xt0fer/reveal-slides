@@ -99,8 +99,8 @@ Detail can be added to the given user story example by adding the following cond
 <p class="fragment fade-up">-Define your roles: (types of users) based on the characteristics of the users and the permissions(abilities)</p>
 <p class="fragment fade-up">-Break your requirements into user stories:
 
-<br>* List separate deliverables as tasks
-<br>* Define Acceptance Criteria
+<br>- List separate deliverables as tasks
+<br>- Define Acceptance Criteria
 </p>
 
 
