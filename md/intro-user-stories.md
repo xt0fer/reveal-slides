@@ -64,7 +64,7 @@ Serve as a high-level acceptance test that will be true once user story is compl
 
 For example:
 
-`As a` vice president of marketing, `I want to` select a holiday season to be used when reviewing the performance of past advertising campaigns `so that` I can identify profitable ones.` 
+`As a` vice president of marketing, `I want to` select a holiday season to be used when reviewing the performance of past advertising campaigns `so that` I can identify profitable ones. 
 
 
 
@@ -98,8 +98,9 @@ Detail can be added to the given user story example by adding the following cond
 <p class="fragment fade-up">-Define your requirements for a project</p>
 <p class="fragment fade-up">-Define your roles: (types of users) based on the characteristics of the users and the permissions(abilities)</p>
 <p class="fragment fade-up">-Break your requirements into user stories
-* List separate deliverables as tasks
-* Define Acceptance Criteria
+
+- List separate deliverables as tasks
+- Define Acceptance Criteria
 </p>
 
 
