@@ -16,9 +16,9 @@ public class FirstSample {
 
 - Java is case sensitive
 - Class names must begin with a letter, and after that, they can have any combination of letters and digits
-- You cannot use a Java reserved word
-- You need to make the file name for the source code the same as the name of the public class
-- whitespace is irrelevant to the Java compiler
+- Do not use Java reserved words (for, while, public...)
+- Name the source file the same as the name of the public class: "FirstSample.java"
+- whitespace (blank lines, spaces, tabs...) is irrelevant to the Java compiler
 
 -
 
@@ -55,7 +55,8 @@ public class FirstSample {
     }
 }
 ```
-<sub>CAUTION: `/* */` comments do not nest in Java.</sub>
+<sub>CAUTION: `/* */` comments do not nest in Java.
+no `/* comment1 /* comment2 */ more */`</sub>
 
 -
 -
@@ -83,7 +84,7 @@ There are eight primitive types in Java:
 
 The integer types are for numbers without fractional parts.
 
-| Type  | Storage requirments | Range (Inclusive)                                       |
+| Type  | Storage requirements | Range (Inclusive)                                       |
 | ----- |:------------------- | :------------------------------------------------------ |
 | int   | 4 bytes             | –2,147,483,648 to 2,147,483, 647 (just over 2 billion)  |
 | short | 2 bytes             | –32,768 to 32,767                                       |
@@ -96,16 +97,22 @@ The integer types are for numbers without fractional parts.
 
 The floating-point types denote numbers with fractional parts
 
-| Type   | Storage requirments | Range (Inclusive)                                              |
+| Type   | Storage requirements | Range (Inclusive)                                              |
 | ------ |:------------------- | :------------------------------------------------------------- |
-| float  | 4 bytes             | Approximately ±3.40282347E+38F (6–7 signi cant decimal digits) |
-| double | 8 bytes             | Approximately ±1.79769313486231570E+308 (15 signi cant decimal digits)|
+| float  | 4 bytes             | Approximately ±3.40282347E+38F (6–7 significant decimal digits) |
+| double | 8 bytes             | Approximately ±1.79769313486231570E+308 (15 significant decimal digits)|
 
 -
 
 ###The char Type
 
 Literal values of type char are enclosed in single quotes.
+
+```
+'a' 'A' ';' '8'
+
+'8' is NOT 8 // one is a char, the other an int
+```
 
 Values of type char can be expressed as hexadecimal values that run from \u0000 to \uFFFF
 
@@ -139,6 +146,7 @@ double salary;
 int vacationDays;
 long earthPopulation;
 boolean done;
+int x;
 ```
 The semicolon is necessary because a declaration is a complete Java statement.
 
@@ -167,6 +175,7 @@ System.out.println(vacationDays); // ERROR--variable not initialized
 ```
 int vacationDays;
 vacationDays = 12;
+System.out.println(vacationDays); // works fine => 12 is printed
 ```
 
 -
@@ -188,12 +197,19 @@ value is set once and for all. Also known as a constant.
 ```
 public class Constants {
     public static void main(String[] args) {
+
         final double CM_PER_INCH = 2.54;
+
         double paperWidth = 8.5;
-        double paperHeight = 11; System.out.println("Paper size in centimeters: "
+        double paperHeight = 11;
+
+        System.out.println("Paper size in centimeters: "
             + paperWidth * CM_PER_INCH + " by " + paperHeight * CM_PER_INCH);
     }
 }
+
+//prints
+Paper size in centimeters: 21.59 by 27.94
 ```
 
 -
@@ -206,9 +222,11 @@ public class Constants2 {
     public static final double CM_PER_INCH = 2.54;
 
     public static void main(String[] args) {
-        double paperWidth = 8.5;
-        double paperHeight = 11; System.out.println("Paper size in centimeters: "
-            + paperWidth * CM_PER_INCH + " by " + paperHeight * CM_PER_INCH);
+      double paperWidth = 8.5;
+      double paperHeight = 11;
+
+      System.out.println("Paper size in centimeters: "
+          + paperWidth * CM_PER_INCH + " by " + paperHeight * CM_PER_INCH);
     }
 }
 ```
@@ -229,6 +247,22 @@ The usual arithmetic operators
 
 
 The / operator denotes integer division if both arguments are integers, and  floating-point division otherwise.
+
+-
+###Examples of Arithmetic Expressions
+
+```
+135 / 45
+
+7 * 8 / 4
+6 + 7 + 8 + 9 - 10
+(5-6) * 123 / 903456782
+40.7 / 12
+6.0 * 3.14159 * 2
+
+67 / 10    // is 6
+67 % 10    // is 7
+```
 
 -
 
@@ -305,7 +339,7 @@ int nx = (int) Math.round(x);
 
 ###Combining Assignment with Operators
 
-`x+=4;` is equivalent to `x=x+4;`
+`x += 4;` is equivalent to `x = x + 4;`
 
 -
 
@@ -325,6 +359,8 @@ int n = 7;
 
 int a = 2 * ++m; // now a is 16, m is 8
 int b = 2 * n++; // now b is 14, n is 8
+b--;             // now b is 13
+int k = b - 1;   // b is 13, k is 12
 ```
 
 -
@@ -336,11 +372,15 @@ double equal sign, ==.
 
 ```
 3==7 // is false.
+
+100 == 100 // is true
 ```
 Use a != for inequality.
 
 ```
 3!=7 // is true.
+
+5 != 5 // is false
 ```
 
 -
@@ -351,6 +391,12 @@ Use a != for inequality.
 | >                 | Greater than          |
 | <=                | Less than or equal    |
 | >=                | Greater than or equal |
+
+```
+a < b
+100 > 5
+currentHeight <= maximumHeight
+```
 
 -
 
@@ -366,12 +412,24 @@ The second argument is not evaluated if the first argument already determines th
 
 `expression1 && expression2`
 
-`x != 0 && 1 / x > x + y // no division by 0`
+```
+input1.isAvailable && input1.canBeUsed()`
+
+(5 != 6) && (i == 0)`
+
+boolean a = true;
+boolean b = false;
+
+a && b         // false
+a || b         // true
+b || a         // true
+!(a && b)      // true
+```
 
 -
 
 The value of expression1 || expression2 is automatically true if the  first
-expression is true, without evaluating the second expression.
+expression is true, without evaluating the second expression. This is the so-called "short circuit" evaluation.
 
 -
 
@@ -379,10 +437,11 @@ Java supports the ternary ?: operator
 
 `condition ? expression1 : expression2`
 
--
+commonly used when an **if** statement is too verbose
 
 ```
-x < y ? x : y //gives the smaller of x and y
+x < y ? x : y // gives the smaller of x and y
+
 ```
 
 -
@@ -395,6 +454,23 @@ x < y ? x : y //gives the smaller of x and y
 
 \>>> operator  lls the top bits with zero, unlike >> which extends the sign
 bit into the top bits. There is no <<< operator.
+
+-
+###Bitwise Example
+12 = 00001100 (In Binary)
+25 = 00011001 (In Binary)
+
+Bitwise OR Operation of 12 and 25
+  00001100
+| 00011001
+  ________
+  00011101  = 29 (In decimal)
+```
+int number1 = 12, number2 = 25, result;
+
+result = number1 | number2;
+System.out.println(result);     // result is 29
+```
 
 -
 
@@ -429,6 +505,11 @@ Now you can declare variables of this type:
 `Size s = Size.MEDIUM;`
 
 -
+```
+enum Weekday { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY };
+
+enum SensorStatus { OFF, ON, RESET, UNKNOWN };
+```
 -
 
 ##Strings
@@ -599,14 +680,14 @@ That is a problem if you want to display, for example, dollars and cents.
 ```
 System.out.printf("%8.2f", x); // 3333.33
 ```
-prints x with a  eld width of 8 characters and a precision of 2 characters.
+prints x with a  field width of 8 characters and a precision of 2 characters.
 
 -
 
 ```
 System.out.printf("Hello, %s. Next year, you'll be %d", name, age);
 ```
-Each of the format specifiers that start with a % character is replaced with the corresponding argument. The conversion character that ends a format speci er indicates the type of the value to be formatted
+Each of the format specifiers that start with a % character is replaced with the corresponding argument. The conversion character that ends a format specifer indicates the type of the value to be formatted
 
 [Conversions for printf](http://alvinalexander.com/programming/printf-format-cheat-sheet)
 
@@ -622,7 +703,8 @@ System.out.printf("%,.2f", 10000.0 / 3.0); // 3,333.33
 You can use the static String.format method to create a formatted string without printing it
 
 ```
-String message = String.format("Hello, %s. Next year, you'll be %d", name, age);
+String message = String.format("Hello, %s. Next year, you'll be %d",
+ name, age);
 ```
 
 [Flags for printf](http://alvinalexander.com/programming/printf-format-cheat-sheet)
@@ -636,7 +718,8 @@ To read from a file, construct a Scanner object
 ```
 Scanner in = new Scanner(Paths.get("myfile.txt"), "UTF-8");
 ```
-If the file name contains backslashes, remember to escape each of them with an additional backslash: "c:\\mydirectory\\myfile.txt".
+If the file name contains backslashes, remember to escape each of them with an additional backslash: "c:\\\\mydirectory\\\\myfile.txt". (yes, really)
+Because: "c:\\\\mydirectory\\\\myfile.txt" gives you "c:\\mydirectory\\myfile.txt"
 
 -
 
@@ -652,6 +735,7 @@ If the file does not exist, it is created.
 
 String dir = System.getProperty("user.dir");
 
+dir now holds the User's working directory => "/Users/jose"
 -
 -
 
@@ -664,9 +748,9 @@ Java, like any programming language, supports both conditional statements and lo
 ###Block Scope
 
 Before learning about control structures, you need to know more about blocks.
-A block or compound statement consists of a number of Java statements, surrounded by a pair of braces. Blocks de ne the scope of your variables.
+A block or compound statement consists of a number of Java statements, surrounded by a pair of braces. Blocks can define the "scope" of your variables.
 
-Blocks can be nested
+Blocks can be nested.
 
 -
 
@@ -694,6 +778,7 @@ public static void main(String[] args)
     {
         int k;
         int n; // Error--can't redefine n in inner block ...
+        // Variable 'n' is already defined within the scope.
     }
 }
 ```
@@ -710,6 +795,10 @@ if(condition) statement
     statement2
     ...
 }
+
+if (currentSensor.sensesMovement() == true) {
+  currentSensor.reset();
+}
 ```
 
 -
@@ -724,6 +813,12 @@ if (condition)
 else
 {
     statement2
+}
+
+if (klingonShip.isAttacking() == true) {
+  firePhotonTorpedoes();
+} else {
+  playWithTribble();
 }
 ```
 
@@ -744,6 +839,14 @@ else
 {
     statement3
 }
+
+if (klingonShip.isAttacking() == true) {
+  firePhotonTorpedoes();
+} else (romulanShip.isUncloaking() == true) {
+  firePhaserSpread();
+} else {
+  playWithTribble();
+}
 ```
 
 -
@@ -754,6 +857,10 @@ The while loop executes a statement (which may be a block statement) while a con
 
 ```
 while(condition) statement
+
+while (player1.lives()) {
+  player1.calculateCurrentLevels();
+}
 ```
 The while loop will never execute if the condition is false at the outset
 
@@ -763,6 +870,8 @@ If you want to make sure a block is executed at least once, you need to move the
 
 ```
 do statement while (condition);
+
+do sensors1.processNextSensorEvent() while (sensor1.hasEvents());
 ```
 -
 
@@ -772,6 +881,9 @@ The for loop is a general construct to support iteration controlled by a counter
 
 ```
 for (int i = 1; i <= 10; i++)
+    System.out.println(i);
+
+for (int i = 23; i != 0 10; i--)
     System.out.println(i);
 ```
 
@@ -814,7 +926,8 @@ The same break statement that you use to exit a switch can also be used to break
 ```
 while (years <= 100) {
     balance += payment;
-    double interest = balance * interestRate / 100; balance += interest;
+    double interest = balance * interestRate / 100;
+    balance += interest;
     if (balance >= goal) break;
     years++;
 }
@@ -839,10 +952,14 @@ while (sum < goal)
 
 ##Big Numbers
 
-If the precision of the basic integer and floating-point types is not suf cient, you can turn to a couple of handy classes in the java.math package: BigInteger and BigDecimal.
+If the precision of the basic integer and floating-point types is not sufficient, you can turn to a couple of handy classes in the java.math package: BigInteger and BigDecimal.
 
 ```
-BigInteger a = BigInteger.valueOf(100);
+BigInteger a = BigInteger.valueOf(100456000);
+
+BigInteger b = BigInteger("1000000498579847590847309574975947598479");
+
+BigInteger secretKey = BinInteger(256, Random(12345678901234567890))
 ```
 
 -
@@ -863,16 +980,19 @@ An array is a data structure that stores a collection of values of the same type
 
 -
 
-Declare an array variable by specifying the array type—which is the element type followed by [] — and the array variable name
+Declare an array variable by specifying the array type—which is the element type followed by [] — and the array variable name. Use the new operator to create the array.
 
 ```
-int[] a;
-```
+int[] first;
 
-Use the new operator to create the array.
-
-```
 int[] a = new int[100];
+
+a[0] = 0;
+a[1] = 5; // this is the SECOND entry.
+a[92] = 42;
+
+int ninetyTwo = 92;
+int tmpA = a[ninetyTwo]; // gets a[92] => 42
 ```
 
 -
@@ -882,11 +1002,17 @@ To find the number of elements of an array, use array.length
 ```
 for (int i = 0; i < a.length; i++)
     System.out.println(a[i]);
+
+x = a[a.length]; // ALWAYS an ERROR.
 ```
 
 -
 
 Once you create an array, you cannot change its size
+
+```
+double[] labSamples = new double[numberOfLabSamples];
+```
 
 -
 
@@ -898,38 +1024,46 @@ The enhanced for loop
 for (variable : collection) statement
 ```
 
--
-
 ```
 for (int element : a) System.out.println(element);
 ```
 
-###Array Initializers and Anonymous Arrays
+-
+
+###Array Initializers
 
 shortcut for creating an array object and supplying initial values at the same time
 
 ```
 int[] smallPrimes = { 2, 3, 5, 7, 11, 13 };
 ```
+is the same as
+
+```
+int[] smallPrimes;
+smallPrimes = new int[] { 2, 3, 5, 7, 11, 13 };
+
+```
+
 
 -
+###Anonymous Arrays  
 
 anonymous array:
 ```
-new int[] { 17, 19, 23, 29, 31, 37 }
-```
+// new int[] { 17, 19, 23, 29, 31, 37 }
+// if a method needs an array, but you haven't got one yet...
 
+SortaRoo.wickedSort(new int[] { 17, 19, 23, 29, 31, 37 })
+// OR
+smallPrimes = new int[] { 17, 19, 23, 29, 31, 37 };
+SortaRoo.wickedSort(smallPrimes)
+```
 -
 
-```
-smallPrimes = new int[] { 17, 19, 23, 29, 31, 37 };
-//is shorthand for
-int[] anonymous = { 17, 19, 23, 29, 31, 37 }; smallPrimes = anonymous;
-```
+###Array Assignment
 
-###Array Copying
-
-You can copy one array variable into another, but then both variables refer to the same array:
+You can assign one array variable to another and both variables refer to the same array:
 
 ```
 int[] luckyNumbers = smallPrimes;
@@ -937,6 +1071,8 @@ luckyNumbers[5] = 12; // now smallPrimes[5] is also 12
 ```
 
 -
+
+###Array Copying
 
 Figure 3.14 shows the result. If you actually want to copy all values of one array into a new array, you use the copyOf method in the Arrays class
 
@@ -956,11 +1092,11 @@ To sort an array of numbers, you can use one of the sort methods in the Arrays c
 
 ```
 int[] a = new int[10000];
-...
+
 Arrays.sort(a)
 ```
 
-This method uses a tuned version of the QuickSort algorithm that is claimed to be very ef cient on most data sets.
+This method uses a tuned version of the QuickSort algorithm that is claimed to be very efficient on most data sets.
 
 [Arrays API](https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html)
 
