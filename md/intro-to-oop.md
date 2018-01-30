@@ -94,8 +94,10 @@ As stated before, all objects have 3 major parts:
 
 ##Relationships between Classes
 
-* Objects are containers.
-
+* Objects are containers. Each has its own "state"
+* Each employee works slightly different hours each week.
+* But they all "punch in" on a single time-clock on the wall each with a different time-card.
+* How can we model this?
 * Think about a scenario in which you have a time-keeping application that has the following objects:
 	* Employee
 	* TimeCard
@@ -134,16 +136,15 @@ As stated before, all objects have 3 major parts:
 -
 -
 
-#Objects and Object Variables
+#Objects and Instance Variables
 * The **new**  keyword is the magic word that tells the JVM to add a new object to the heap.
 * We used **new** back when we created Arrays. That's because an Array object is constructed from the Array **class**
-* We commonly construct **objects** with "new"
+* We commonly construct **objects** with **new**
 * Each object has its OWN copies of the 'instance variables'.
 ```
-// every person object has an instance variable 'age'
-// so
-joe.age might be 28
-mary.age might be 29
+// maybe person object has an instance variable 'age'
+// joe.age might be 28
+// mary.age might be 29
 ```
 -
 
@@ -199,7 +200,7 @@ joe.setLastName("Smith"); // tends to make sense
 
 LocalDate today = new LocalDate.now()
 LocalDate tomorrow = today.plusDays(1);
-// today != tomorrow they are two different objects.
+// today != tomorrow  LocalDate makes sure they are two different objects.
 ```
 -
 
