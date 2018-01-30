@@ -138,7 +138,13 @@ As stated before, all objects have 3 major parts:
 * The **new**  keyword is the magic word that tells the JVM to add a new object to the heap.
 * We used **new** back when we created Arrays. That's because an Array object is constructed from the Array **class**
 * We commonly construct **objects** with "new"
-
+* Each object has its OWN copies of the 'instance variables'.
+```
+// every person object has an instance variable 'age'
+// so
+joe.age might be 28
+mary.age might be 29
+```
 -
 
 ###Constructors
@@ -199,7 +205,7 @@ LocalDate tomorrow = today.plusDays(1);
 
 ###Accessors
 
-* **Accessors** - are the privileges we assign to field objects, methods, and functions we define in our classes.
+* **Accessors** - are the privileges we assign to field objects and methods we define in our classes.
     * Public
     * Private
     * Protected
@@ -338,8 +344,8 @@ toby.shootWebAtTarget(badguy);
 
 #Private Methods
 * Every object has an Interface
-* the interface is the public methods and fields that it comprised of.
-* Yet there are times when we need a method in our object, that accomplishes a helper task.
+* The Interface is the public methods and fields of an object
+* Yet there are times when we need a "private" method in our object, that accomplishes a helper task
 * Methods should have a **SINGLE RESPONSIBILITY** (have you heard that term enough?)
 
 -
@@ -359,7 +365,7 @@ public String canIBorrowMoney(Person person, Double amount ){
 
      // Third Action
     if ( this.amount > amount ) {
-       return “Sure things";
+       return “Sure thing!";
     } else { // Fourth Action
         return “no”;
     }
@@ -398,55 +404,63 @@ private void doIHaveEnough( ){
       throw new Exception("I am broke you give me money!");
     }
 }
+```
+-
 
+###Private methods
+
+With those three private methods, we can rewrite the public one using them.
+
+```
 public String canIBorrowMoney(Person person, Double amount ){
     doIKnowYou(person);
     doILikeYou(person);
     doIHaveEnough( );
-    return “Sure thing playa”;
+    return “Sure thing, playa”;
 }
 ```
+
 -
 ###Private Methods
 
-* It doesn’t make sense for these methods to be called by any object accept for the one that owns it, so it's private. We don’t want to allow outside objects change or mutate any values that could effect our decision, and the way we want to respond to the question being asked to us.
+* It doesn’t make sense for these methods to be called by any outside object,  so we make the methods private. We don’t want to allow outside objects to change or mutate any values that could effect our decision, or the way we want to respond to the question being asked of us.
 
 -
 -
 
-##The Final Key Word
-* **Immutable** - unchanging over time or unable to be changed.
+##The 'final' Key Word
+* **Immutable** - unchanging over time or unable to be changed. (think opposite of mutation)
 * There are going to be times when we need to guarantee consistency and stability. There are going to be objects in our programs that have values which should NEVER be changed, because it could cause unintended results.
 
 -
 
 ##First rule of programming
-* **EVERYONE ELSE IS STUPID!!!!** If you don’t explicitly stop someone from doing something, they will eventually do it.
+* **EVERYONE ELSE IS STUPID!!!!** If you don’t explicitly stop someone from doing something, they will eventually do it. Using your code to do it.
 
 -
 
-* Lets say we are creating an application that is dependent on the value of **pi** 3.14159. This program will guide a drone around a defined circle .
+* Lets say we are creating an application that is dependent on the value of **pi**  equal to 3.14159. The application will pilot a drone around a defined circle in the air.
 
 * It's important for this drone to fly with a high level of precision.
 
 -
 
-* All of the tests we did to validate this precision is based off of the value of **pi** to the 5th power.
+* All of the tests we did to validate the drone's precision is based off of the value of **pi** with 5 decimal places.
 
-* All of the objects that help the drone navigate operate off of **pi** to the 5th power.
+* All of the objects that help the drone navigate rely on the fact that  **pi** is this precise.
 
 -
 
-* If that value changes during the flight, it could and would lead to a collision.
+* If that value changes during the flight, it could and would lead to a collision or crash.
 
 * So it's important that once in flight that value NEVER changes.
 
-* This is where the final keyword comes into play.
+* This is where the **final** keyword comes into play.
 
 -
 
-##Final
-* **Final** is how we define a value as constant or consistent from the start of the application to the end of the application. The value of this variable is set at the start of the application, and cannot be mutated, by any object at all.
+##final
+* **final** is how we define a value as constant or consistent from the start of the application to the end of the application. The value of this variable is set at the start of the application, and cannot be mutated, by any objects at all.
 
 ```
 private final Float pi = 3.14159;
@@ -455,8 +469,18 @@ private final Float pi = 3.14159;
 -
 
 ##Static Fields and Methods
-* **static** - lacking in movement, action, or change.
 
+**static** - lacking in movement, action, or change.
+
+We've used `System.out.println()` A LOT. And it's defined:
+
+```
+public class System {
+   public static final PrintStream out = ...
+}
+
+```
+This implies that there is ONLY one 'out' object in the entire program.
 -
 
 ###Static Fields and Methods
@@ -743,7 +767,7 @@ public class Superman( ){
 -
 
 ##Packages
-* A **namespace** is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur, especially when your code base includes multiple libraries.
+* A **namespace** is a declarative region that provides a scope to the identifiers (the names of types, methods, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur, especially when your code base includes multiple libraries.
 
 -
 
