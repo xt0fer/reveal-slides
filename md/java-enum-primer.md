@@ -30,10 +30,10 @@ public enum Size
 
 All enumerated types are subclasses of the class Enum. They inherit a number of methods from that class.
 
-`Size.SMALL.toString()`
+`Size.SMALL.toString()` gives "S"
 
 conversely
 
 `Size s = Enum.valueOf(Size.class, "SMALL");`
 
-`Size.MEDIUM.ordinal()`
+`Size.MEDIUM.ordinal()` gives a 0-based index (1)... XL is (3)...

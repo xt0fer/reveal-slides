@@ -41,7 +41,7 @@
 
 ##Single Responsibility
 
-* Think about a printer in an office. Do you care how the printer works, or do you only care about the documents you asked it to make? 
+* Think about a printer in an office. Do you care how the printer works, or do you only care about the documents you asked it to make?
 
 * It's not your job to print the documents, so you don’t need to or care about how it's done. Only that it gets done.
 
@@ -54,7 +54,7 @@
 -
 
 ##Defense
-    
+
 * Encapsulation is also important in defensive programming.  Object methods should only be able to change and interact with field objects of the same class they belong to. This way, you can control the probability of unintended bugs in the future.
 
 -
@@ -88,17 +88,19 @@ As stated before, all objects have 3 major parts:
 
 ##Relationships between Classes
 
-* **Dependence** (“Uses-a”) - Think about the objects a class needs to complete its job. 
+* **Dependence** (“Uses-a”) - Think about the objects a class needs to complete its job.
 
 -
 
 ##Relationships between Classes
 
-* Objects are containers. 
-
+* Objects are containers. Each has its own "state"
+* Each employee works slightly different hours each week.
+* But they all "punch in" on a single time-clock on the wall each with a different time-card.
+* How can we model this?
 * Think about a scenario in which you have a time-keeping application that has the following objects:
-	* Employee 
-	* TimeCard 
+	* Employee
+	* TimeCard
 	* TimeClock  
 
 -
@@ -119,8 +121,8 @@ As stated before, all objects have 3 major parts:
 
 ###Aggregation
 
-* Programs by nature should avoid complexity, so keep things as simple as possible. 
-    
+* Programs by nature should avoid complexity, so keep things as simple as possible.
+
 * The objects that you create, and the objects that you use should have a SINGLE-RESPONSIBLITY. They should have one task to do, and do it well.
 
 * Complexity is achieved by creating container classes, which are comprised of simple objects working together to achieve one objective.
@@ -134,17 +136,16 @@ As stated before, all objects have 3 major parts:
 -
 -
 
-#Objects and Object Variables
+#Objects and Instance Variables
 * The **new**  keyword is the magic word that tells the JVM to add a new object to the heap.
-
--
-
-###Objects and Object Variables
-
-* Your job as a program is to avoid **NULL** values. OOP is all about Objects talking to Objects by sending messages to each other. 
-
-* **Null** means that there is a message being sent to an object that doesn’t exist, and that will lead to a error.
-
+* We used **new** back when we created Arrays. That's because an Array object is constructed from the Array **class**
+* We commonly construct **objects** with **new**
+* Each object has its OWN copies of the 'instance variables'.
+```
+// maybe person object has an instance variable 'age'
+// joe.age might be 28
+// mary.age might be 29
+```
 -
 
 ###Constructors
@@ -157,22 +158,67 @@ As stated before, all objects have 3 major parts:
 	* A **constructor** is always called with the **new** keyword.
 
 -
+###Constructors
 
-##Mutator and Accessor
-* A **Mutator** is an action or method that changes the STATE of an object.
+```
+public class Person {
+  public Person() {
+    /* setup some defaults? */
+  }
+}
 
-* This can be a dangerous event, because if other objects have a dependency on that object, and things are changed unexpectedly or unintentionally, this could lead to false results.
+Person joe = new Person();
+```
+-
+
+###Objects and Object Variables
+
+* Your job as a program is to avoid **NULL** values. OOP is all about Objects talking to Objects by sending messages to each other.
+
+```
+Person joe = new Person();
+// joe is a reference to a Person Object
+
+Person harlan;          // right now, harlan == null
+// harlan is a reference to the Null Object
+
+harlan = new Person();
+boolean samePerson = (joe == harlan); // samePerson is false
+```
+* **Null** means that there is a message being sent to an object that doesn’t exist, and that will lead to a error.
 
 -
 
-###Mutator and Accessor
+##Mutator and Accessor
+* A **Mutator** is an action or method that changes the STATE of an object.
+* Many times a mutator is required to make objects do useful work.
+* Sometimes, mutators don't make sense.
+* Mutators can be dangerous events, because if other objects have a dependency on that object, and things are changed unexpectedly or unintentionally, this could lead to false results.
 
-* **Accessors** - are the privileges we assign to field objects, methods, and functions we define in our classes. 
+```
+joe.setLastName("Smith"); // tends to make sense
+
+LocalDate today = new LocalDate.now()
+LocalDate tomorrow = today.plusDays(1);
+// today != tomorrow  LocalDate makes sure they are two different objects.
+```
+-
+
+###Accessors
+
+* **Accessors** - are the privileges we assign to field objects and methods we define in our classes.
     * Public
     * Private
     * Protected
     * Default
-   
+* this allows us to open up or hide different things inside an object.
+```
+public class BankBalance {
+	public String owner;
+	private int balance;
+}
+// you can see who owns the account, but not what it's balance is.
+```
 -
 -
 
@@ -180,24 +226,25 @@ As stated before, all objects have 3 major parts:
 
 * Objects communicate with each other via the Interfaces, which are the public methods defined in their classes.
     * **Implicit** - implied though not plainly expressed.
-    * **Explicit** - stated clearly and in detail, leaving no room for confusion or doubt. 
- 
+    * **Explicit** - stated clearly and in detail, leaving no room for confusion or doubt.
+
 -
 
 ###Implicit and Explicit Parameters
 ```
 Public Class SpiderMan extends Hero {
-    
     // Constructor
     public SpiderMan( ){…}
 
+    // a method
     public shootWebAtTarget(Target target) { …. }
 
+    // another method
     public selectTargetAndShootWeb( ){
         Target target = new Target( );
         shootWebAtTarget(target);
     }
-} 
+}
 ```
 
 -
@@ -205,9 +252,14 @@ Public Class SpiderMan extends Hero {
 
 * Lets look at the method ***shootWebAtTarget( )*** . This method has two parameters and an Implicit parameter which is the SpiderMan object.
 
-* The SpiderMan object is not explicitly called, but is ***implied*** by the compiler when this program is executed. 
+* The SpiderMan object is not explicitly called, but is ***implied*** by the compiler when this program is executed.
 * The target object is ***explicitly*** stated parameter which has to be stated each time the method is called.
 
+```
+SpiderMan toby = new SpiderMan();
+Target badguy = new Target();
+toby.shootWebAtTarget(badguy);
+```
 -
 -
 
@@ -216,7 +268,7 @@ Public Class SpiderMan extends Hero {
 
 -
 ###Benefits of encapsulation
- 
+
 * There is already a possibility of the logic we create being flawed, which would result in errors or unintended results. Encapsulation can’t save us from the issues with our own personal logic, but it can help us avoid issues from unintended side effects of other objects.
 
 -
@@ -236,7 +288,7 @@ Public Class SpiderMan extends Hero {
 -
 
 ###Single-Responsiblity
-* If it was up to the **User**, they would take the 100 dollars even if their account did not have the amount in it. It would be awesome if we lived in a world in which everyone could get what they wanted, when they wanted it. Yet, we don't. 
+* If it was up to the **User**, they would take the 100 dollars even if their account did not have the amount in it. It would be awesome if we lived in a world in which everyone could get what they wanted, when they wanted it. Yet, we don't.
 
 * The User should not be allowed to take what ever they wanted, they should only be able to ASK for it.
 
@@ -252,7 +304,7 @@ Public Class SpiderMan extends Hero {
 
 ####So who should the User ask for the Money?
 
-* It makes the most sense for the **User** to ask the **Bank** for the money. Even though the **UserAccount** is dependent on the **User** object, the **User** object is not dependent on the **UserAccount**. 
+* It makes the most sense for the **User** to ask the **Bank** for the money. Even though the **UserAccount** is dependent on the **User** object, the **User** object is not dependent on the **UserAccount**.
 
 * So since its not dependent on it, it has no reason to know it even exists. In the real world, the **User** would ask the Bank or the Automated Teller Machine at the bank for money.
 
@@ -265,11 +317,11 @@ Public Class SpiderMan extends Hero {
 -
 
 ####So who should the User ask for the Money?
- 
+
 * A bank can have multiple users, which could become very complicated.
 * Keep things simple by making an object to manage user information.
 * The bank will ask the **UserAccount** for how much money is available.
-* The **UserAccount** will have the amount of **Dollars** stored in it. 
+* The **UserAccount** will have the amount of **Dollars** stored in it.
 
 -
 
@@ -281,7 +333,7 @@ Public Class SpiderMan extends Hero {
 
 ##Encapsulation
 
-* **Encapsulation** comes in here! The field inside of **UserAccount** called **dollars** will be set to private. Only the **UserAccount** will have access to Mutate that field and change the amount. **SINGLE RESPONSIBILITY**. 
+* **Encapsulation** comes in here! The field inside of **UserAccount** called **dollars** will be set to private. Only the **UserAccount** will have access to Mutate that field and change the amount. **SINGLE RESPONSIBILITY**.
 
 -
 
@@ -293,16 +345,17 @@ Public Class SpiderMan extends Hero {
 -
 
 #Private Methods
-* Every object has an Interface the interface is the public methods and fields that it comprised of.
-* Yet there are times when we need a method in our object, that accomplishes a helper task.
-* Functions should have a **SINGLE RESPONSIBILITY** (have you heard that term enough?) 
+* Every object has an Interface
+* The Interface is the public methods and fields of an object
+* Yet there are times when we need a "private" method in our object, that accomplishes a helper task
+* Methods should have a **SINGLE RESPONSIBILITY** (have you heard that term enough?)
 
 -
 
 ###Private Methods
 ```
 public String canIBorrowMoney(Person person, Double amount ){
-    // First Action 
+    // First Action
     if ( this.person.equals(person) ) {
        return “no";
     }
@@ -311,10 +364,10 @@ public String canIBorrowMoney(Person person, Double amount ){
     if ( person.like != true ) {
        return “no;
     }
-    
+
      // Third Action
     if ( this.amount > amount ) {
-       return “Sure things";
+       return “Sure thing!";
     } else { // Fourth Action
         return “no”;
     }
@@ -326,10 +379,10 @@ public String canIBorrowMoney(Person person, Double amount ){
 
 ###Private Methods
 
-* The problem with this function is we can’t test it, it's doing too much!
+* The problem with this method is we can’t test it, it's doing too much!
 
 	* So how do we fix it?
-	* Take each action and make it a private function.
+	* Take each action and make it a private method.
 	* We make them private because they only exist to help us answer the one question our interface is making available, *canIBorrowMoney(~)*.
 
 -
@@ -351,67 +404,85 @@ private void doILikeYou( Person person){
 private void doIHaveEnough( ){
     if ( this.amount < amount ) {
       throw new Exception("I am broke you give me money!");
-    } 
+    }
 }
+```
+-
 
+###Private methods
+
+With those three private methods, we can rewrite the public one using them.
+
+```
 public String canIBorrowMoney(Person person, Double amount ){
     doIKnowYou(person);
     doILikeYou(person);
     doIHaveEnough( );
-    return “Sure thing playa”;
+    return “Sure thing, playa”;
 }
 ```
+
 -
 ###Private Methods
 
-* It doesn’t make sense for these methods to be called by any object accept for the one that owns it, so it's private. We don’t want to allow outside objects change or mutate any values that could effect our decision, and the way we want to respond to the question being asked to us.
+* It doesn’t make sense for these methods to be called by any outside object,  so we make the methods private. We don’t want to allow outside objects to change or mutate any values that could effect our decision, or the way we want to respond to the question being asked of us.
 
 -
 -
 
-##The Final Key Word
-* **Immutable** - unchanging over time or unable to be changed.
+##The 'final' Key Word
+* **Immutable** - unchanging over time or unable to be changed. (think opposite of mutation)
 * There are going to be times when we need to guarantee consistency and stability. There are going to be objects in our programs that have values which should NEVER be changed, because it could cause unintended results.
 
 -
 
-##First rule of programming 
-* **EVERYONE ELSE IS STUPID!!!!** If you don’t explicitly stop someone from doing something, they will eventually do it.
+##First rule of programming
+* **EVERYONE ELSE IS STUPID!!!!** If you don’t explicitly stop someone from doing something, they will eventually do it. Using your code to do it.
 
 -
 
-* Lets say we are creating an application that is dependent on the value of **pi** 3.14159. This program will guide a drone around a defined circle . 
+* Lets say we are creating an application that is dependent on the value of **pi**  equal to 3.14159. The application will pilot a drone around a defined circle in the air.
 
 * It's important for this drone to fly with a high level of precision.
 
 -
 
-* All of the tests we did to validate this precision is based off of the value of **pi** to the 5th power.
+* All of the tests we did to validate the drone's precision is based off of the value of **pi** with 5 decimal places.
 
-* All of the objects that help the drone navigate operate off of **pi** to the 5th power.
+* All of the objects that help the drone navigate rely on the fact that  **pi** is this precise.
 
 -
 
-* If that value changes during the flight, it could and would lead to a collision.
+* If that value changes during the flight, it could and would lead to a collision or crash.
 
 * So it's important that once in flight that value NEVER changes.
 
-* This is where the final keyword comes into play.
+* This is where the **final** keyword comes into play.
 
 -
 
-##Final 
-* **Final** is how we define a value as constant or consistent from the start of the application to the end of the application. The value of this variable is set at the start of the application, and cannot be mutated, by any object at all.
+##final
+* **final** is how we define a value as constant or consistent from the start of the application to the end of the application. The value of this variable is set at the start of the application, and cannot be mutated, by any objects at all.
 
 ```
-private final Float pi = 3.1489;
+private final Float pi = 3.14159;
 ```
 -
 -
 
 ##Static Fields and Methods
-* **static** - lacking in movement, action, or change.
 
+**static** - lacking in movement, action, or change.
+
+We've used `System.out.println()` A LOT. And it's defined:
+
+```
+public class System {
+   public static final PrintStream out = ...
+}
+
+```
+This implies that there is ONLY one 'out' object in the entire program.
 -
 
 ###Static Fields and Methods
@@ -427,11 +498,11 @@ private final Float pi = 3.1489;
 ```
 public class Hobbit{
     private static boolean hasRing;
-     
+
     public void loseRing (){
         Hobbit.hasRing = false;
     }
-    
+
     public boolean doWeHaveTheRing(){ return Hobbit.hasRing;}
     public Hobbit( ){
         hasRing = true;
@@ -446,16 +517,16 @@ public class Hobbit{
 
 ```
 public class Journey{
-    
+
     public static void main(String[] args){
         Hobbit frodo = new Hobbit( );
         Hobbit samWise = new Hobbit( );
         // Will Print True
-        System.out.println(“Do you have the ring?” 
+        System.out.println(“Do you have the ring?”
         + frodo.doWeHaveTheRing().toString());
         samWise.loseRing( );
         // Will print False
-        System.out.println(“Do you have the ring?” 
+        System.out.println(“Do you have the ring?”
         + frodo.doWeHaveTheRing().toString());
     }
 }
@@ -464,8 +535,8 @@ public class Journey{
 -
 -
 
-###Static Constants
-* Static variables are very rare.
+###Static Variable/Fields
+* Static variables/fields are very rare.
 * Static values violate Object Oriented Principles and **SINGLE RESPONSIBILITY**
 
 -
@@ -476,10 +547,10 @@ public class Journey{
 * If objects all share the same constant values, there is no need for each instant of that object to have its own value.
 
 ```
-private final Float pi = 3.1489; 
+private final Float pi = 3.14159;
 //every instant will have a copy of this value that can never change.
 
-private static final Float pi = 3.1489; 
+private static final Float pi = 3.14159;
 // there will only be one copy shared between any instance created.
 ```
 -
@@ -489,7 +560,7 @@ private static final Float pi = 3.1489;
 
 ```
 public class Calculator {
-    public int add (int x, int y) {
+    public static int add (int x, int y) {
         return (x+y);
     }
 }
@@ -497,7 +568,7 @@ public class Calculator {
 -
 ###Static Methods
 
-* Do we really need to create an instance of the object Calculator for the method **add** to do its job? 
+* Do we really need to create an instance of the object Calculator for the method **add** to do its job?
 * No, we do not. We can just call *Calculator.add(x,y)*;
 * Static methods, unlike instance methods are available as soon as the program is started, and are available until the program has completed.
 
@@ -506,20 +577,17 @@ public class Calculator {
 
 ##The main Method
 
-* The **main** method is the entry point for your application. Remember, you do not have any direct access to the heap where objects exist in memory. So, the only way to set the stage for our application to function is to use a static method. 
-
--
-##Main
-
+* The **main** method is the entry point for your application.
 * **main** is a reserved word that the JVM looks for to start our programs. Every java program has a main method.
 
 ```
-static void main(String[] args) { ... } 
+static void main(String[] args) { /* do something useful. */ }
 ```
 
 -
 ###Main
 * Some projects have multiple objects with main methods. The compiler will use the main method of the class file you choose when you decide to run.
+* The **main** method is **static** because we need a way to start before any objects are created in memory.
 
 -
 -
@@ -532,7 +600,7 @@ static void main(String[] args) { ... }
 -
 ###Method Parameters
 
-* Java does manipulate objects by reference, and all object variables are references. 
+* Java does manipulate objects by reference, and all object variables are references.
 
 * However, Java doesn't pass method arguments by reference; it passes them by value.
 
@@ -546,40 +614,64 @@ static void main(String[] args) { ... }
 -
 
 ##Object Construction  
-* Objects are containers, the objects we use and create are composed of other objects. 
-
-* As stated before , we are in an eternal value to avoid null. Object oriented programming is objects talking to other objects: if we send a message to an object that doesn’t exist, our programs will fail.
+* Objects are containers, the objects we use and create are composed of other objects.
+* As stated before, we are in an eternal struggle to avoid null objects.
+* Object oriented programming is objects talking to other objects: if we send a message to an object that doesn’t exist, our programs will fail.
 
 -
 ###Constructors
-* This is where constructors come in. We use constructors to control the creation of our objects, and guarantee that the member objects or fields that our object is comprised of exist, are available, and are at the state we need for them to do their job.
+* This is where constructors come in.
+* We use constructors to control the creation of our objects
+* We can guarantee that objects are initialized correctly.
+* Make sure you are thoughtful about what "defaults" we'd like to see within our objects.
 
 -
 ####Constructors
 
 * Java does manipulate objects by reference, and all object variables are references. However, Java doesn't pass method arguments by reference; it passes them by value.
 
+```
+Person joe = new Person(); // joe is a constructed object.
+
+boss.giveRaise(joe, 100.00);
+
+// inside the boss object we might have
+public void giveRaise(Person emp, float raiseAmount) {
+
+  // emp is a reference to the joe object.
+  emp.salary = emp.salary + raiseAmount;
+}
+```
+
 -
-##Overloading
-**Overloading** is when we have methods that have the 
+##Overloading Methods
+**Overloading** is when we have methods that have the
 
 * same name
 * return the type
 * but take different parameters.
 
+```
+public class CarDealer {
+  public boolean sell(Car car) {...}
+  public boolean sell(Truck truck) {...}
+  public boolean sell(Motorcycle moto) {...}
+}
+```
+
 -
 
 ###Overloading
 
-* There are times when we need to construct our objects under different circumstances. We can use overloading to create multiple versions of methods. 
+* There are times when we need to construct our objects under different circumstances. We can use overloading to create multiple versions of methods.
 
 -
-###Overloading
+###Overloading Constructor
 
 ```
 public class Superman( ){
     private boolean dressedLikeClarkKent;
-    
+
     // By default we start off in disguise
     public Superman( ) { dressedLikeClarkKent = true; }
 
@@ -603,7 +695,7 @@ public Superman() {}
 
 ##Default Field Initialization
 
-* If you don’t set a field explicitly in a constructor, it is automatically set to a default value: numbers to 0, boolean values to false, and object references to null. 
+* If you don’t set a field explicitly in a constructor, it is automatically set to a default value: numbers to 0, boolean values to false, and object references to null.
 * Some people consider it poor programming practice to rely on the defaults. Certainly, it makes it harder for someone to understand your code if fields are being initialized invisibly.
 
 -
@@ -622,12 +714,13 @@ public Superman() {}
 
 ```
 public void setValue(String value){
-    /* Here it makes sense because we have two values 
+    /* Here it makes sense because we have two values
        of the same name to explicitly say this.
-       If there is not a conflict in naming you should 
+       If there is not a conflict in naming you should
        let the compiler implicitly associate it.*/
+
     this.value = value;
-} 
+}
 ```
 -
 
@@ -636,11 +729,11 @@ public void setValue(String value){
 ```
 public class Superman( ){
     private boolean dressedLikeClarkKent;
-    
+
     //By default we start off in disguise
     public Superman( ) {
-	      /* we are calling the constructor and 
-	      setting the default value we would 
+	      /* we are calling the constructor and
+	      setting the default value we would
 	      like set*/
          this.Superman(true);
     }
@@ -664,8 +757,8 @@ public class Superman( ){
 ```
 public Superman ( ){
     private static boolean manOfSteel;
-    
-    // When the program starts this code is run before any objects are created 
+
+    // When the program starts this code is run before any objects are created
    //  and the constructor is called
     {
         manOfSteel = true;
@@ -674,7 +767,9 @@ public Superman ( ){
 ```
 -
 
-The static block is ONLY run once when the class is loaded for the first time in the JVM
+The static block is ONLY run once when the class is loaded for the first time in the JVM.
+
+the **System** package might do this for the **out** object, so that it's ready to be used right away.
 
 -
 -
@@ -701,7 +796,7 @@ public class Superman( ){
 -
 
 ##Packages
-* A **namespace** is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur, especially when your code base includes multiple libraries.
+* A **namespace** is a declarative region that provides a scope to the identifiers (the names of types, methods, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur, especially when your code base includes multiple libraries.
 
 -
 

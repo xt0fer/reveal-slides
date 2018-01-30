@@ -412,10 +412,10 @@ The second argument is not evaluated if the first argument already determines th
 
 `expression1 && expression2`
 
-```
-input1.isAvailable && input1.canBeUsed()`
+```Java
+input1.isAvailable && input1.canBeUsed()
 
-(5 != 6) && (i == 0)`
+(5 != 6) && (i == 0)
 
 boolean a = true;
 boolean b = false;
@@ -457,7 +457,9 @@ bit into the top bits. There is no <<< operator.
 
 -
 ###Bitwise Example
+
 12 = 00001100 (In Binary)
+
 25 = 00011001 (In Binary)
 
 Bitwise OR Operation of 12 and 25
@@ -812,12 +814,9 @@ if (currentSensor.sensesMovement() == true) {
 if/else statement
 
 ```
-if (condition)
-{
+if (condition) {
     statement1
-}
-else
-{
+} else {
     statement2
 }
 
@@ -833,16 +832,11 @@ if (klingonShip.isAttacking() == true) {
 if/else if
 
 ```
-if (condition)
-{
+if (condition) {
     statement1
-}
-else (condition2)
-{
+} else (condition2) {
     statement2
-}
-else
-{
+} else {
     statement3
 }
 
@@ -963,9 +957,9 @@ If the precision of the basic integer and floating-point types is not sufficient
 ```
 BigInteger a = BigInteger.valueOf(100456000);
 
-BigInteger b = BigInteger("1000000498579847590847309574975947598479");
+BigInteger b = BigInteger("100000049857984759084730957497594");
 
-BigInteger secretKey = BinInteger(256, Random(12345678901234567890))
+BigInteger secretKey = BigInteger(256, Random(12345678907890))
 ```
 
 -
@@ -1088,10 +1082,6 @@ int[] copiedLuckyNumbers = Arrays.copyOf(luckyNumbers, luckyNumbers.length);
 
 -
 
-###Command-Line Parameters
-
--
-
 ###Array Sorting
 
 To sort an array of numbers, you can use one of the sort methods in the Arrays class:
@@ -1112,11 +1102,12 @@ This method uses a tuned version of the QuickSort algorithm that is claimed to b
 
 Multidimensional arrays use more than one index to access array elements
 
-Declaring a two-dimensional array in Java
+Declaring a two-dimensional array (matrix) in Java
 
 ```
 double[][] balances;
 ```
+You can even do 3-dimensional arrays...
 
 -
 
