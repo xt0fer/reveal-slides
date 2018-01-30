@@ -233,12 +233,13 @@ public class BankBalance {
 ###Implicit and Explicit Parameters
 ```
 Public Class SpiderMan extends Hero {
-
     // Constructor
     public SpiderMan( ){…}
 
+    // a method
     public shootWebAtTarget(Target target) { …. }
 
+    // another method
     public selectTargetAndShootWeb( ){
         Target target = new Target( );
         shootWebAtTarget(target);
@@ -614,25 +615,49 @@ static void main(String[] args) { /* do something useful. */ }
 
 ##Object Construction  
 * Objects are containers, the objects we use and create are composed of other objects.
-
-* As stated before , we are in an eternal value to avoid null. Object oriented programming is objects talking to other objects: if we send a message to an object that doesn’t exist, our programs will fail.
+* As stated before, we are in an eternal struggle to avoid null objects.
+* Object oriented programming is objects talking to other objects: if we send a message to an object that doesn’t exist, our programs will fail.
 
 -
 ###Constructors
-* This is where constructors come in. We use constructors to control the creation of our objects, and guarantee that the member objects or fields that our object is comprised of exist, are available, and are at the state we need for them to do their job.
+* This is where constructors come in.
+* We use constructors to control the creation of our objects
+* We can guarantee that objects are initialized correctly.
+* Make sure you are thoughtful about what "defaults" we'd like to see within our objects.
 
 -
 ####Constructors
 
 * Java does manipulate objects by reference, and all object variables are references. However, Java doesn't pass method arguments by reference; it passes them by value.
 
+```
+Person joe = new Person(); // joe is a constructed object.
+
+boss.giveRaise(joe, 100.00);
+
+// inside the boss object we might have
+public void giveRaise(Person emp, float raiseAmount) {
+
+  // emp is a reference to the joe object.
+  emp.salary = emp.salary + raiseAmount;
+}
+```
+
 -
-##Overloading
+##Overloading Methods
 **Overloading** is when we have methods that have the
 
 * same name
 * return the type
 * but take different parameters.
+
+```
+public class CarDealer {
+  public boolean sell(Car car) {...}
+  public boolean sell(Truck truck) {...}
+  public boolean sell(Motorcycle moto) {...}
+}
+```
 
 -
 
@@ -641,7 +666,7 @@ static void main(String[] args) { /* do something useful. */ }
 * There are times when we need to construct our objects under different circumstances. We can use overloading to create multiple versions of methods.
 
 -
-###Overloading
+###Overloading Constructor
 
 ```
 public class Superman( ){
@@ -693,6 +718,7 @@ public void setValue(String value){
        of the same name to explicitly say this.
        If there is not a conflict in naming you should
        let the compiler implicitly associate it.*/
+
     this.value = value;
 }
 ```
@@ -741,7 +767,9 @@ public Superman ( ){
 ```
 -
 
-The static block is ONLY run once when the class is loaded for the first time in the JVM
+The static block is ONLY run once when the class is loaded for the first time in the JVM.
+
+the **System** package might do this for the **out** object, so that it's ready to be used right away.
 
 -
 -
