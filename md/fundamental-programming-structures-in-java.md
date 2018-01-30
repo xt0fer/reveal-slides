@@ -484,6 +484,12 @@ System.out.println(result);     // result is 29
 
 `(a && b) || c`
 
+```
+4 + 5 * 8 == 44
+(4 + 5) * 8 == 72
+```
+`*, / have higher precedence than +, -`
+-
 Since += associates right to left, the expression
 
 `a += b += c`
