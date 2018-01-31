@@ -12,7 +12,7 @@
 
 ### Generics - a FIFO Queue
 
-- queue: a data structure that allows for FIRS IN, FIRST OUT.
+- queue: a data structure that allows for FIRST IN, FIRST OUT.
 - this is a **thought experiment**, just **imagine** having this thing...
 - Queue s = new Queue(); give you a "queue for waiting objects"
 - s.append(object1); s.append(object2);

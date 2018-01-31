@@ -12,9 +12,9 @@
 ```Java
 class Container {
   private Object element;
-  
+
   public Object get(){return element;}
-  
+
   public void put(Object item){ element = item; }
 }
 ```
@@ -33,9 +33,9 @@ String s = (String)c.get(); //Must be cast
 ```Java
 class Container<T> {
   private T element;
-  
+
   public T get(){return element;}
-  
+
   public void put(T item){ element = item; }
 }
 ```
@@ -73,20 +73,25 @@ double middle = ArrayAlg.getMiddle(3.14, 1729, 0)
 ```Java
 public static <T extends Comparable> T min(T[] a){...}
 ```
+
 When `extending` T must always be a subtype of its bounding type.<br>
 REMEMBER: if B extends A, that does NOT mean that T&lt;B> extends T&lt;A>
 -
 -
 ## Wildcards
+
 Unbounded Wildcards are used when you don't care about the type.
+
 ```Java
 public static boolean isEven(List<?> list) {
   return (list.size() % 2 == 0)
 }
 ```
-Bounded Wildecards, however, let you care somewhat about the type<br>
-`? extends Something` is typically when you are reading from something generic.  Means any subclass of `Something`.<br>
-`? super Something` is typically when you are writing to something generic.  Means any superclass of `Something`.<br>
+
+Bounded Wildcards, however, let you care somewhat about the type
+`? extends Something` is typically when you are reading from something generic.  Means any subclass of `Something`.
+`? super Something` is typically when you are writing to something generic.  Means any superclass of `Something`.
+
 -
 -
 You can also capture wildcards by passing the variable to another function that doesn't have a wildcard.  Though, this is rarely used (or allowed), since the compiler needs to be certain that the wildcard represents a single type.
@@ -225,13 +230,10 @@ class MyNode extends Node {
 -
 -
 * No using them as statics in generic classes.
-  * You can use them in exception specs, though. 
+  * You can use them in exception specs, though.
 * No throwing or catching them.
   * Using generics wrong in the context of Exceptions can even break checked exception checking.
 -
 -
 # Reflection
 You can, in fact, leverage reflection to find out about an Object's generic past.  This is all at runtime, though.  So, in all reality, you can see what's happening and where Objects came from, but know that as far as the compiler is concerned, they don't really matter.  Like, they've functionally been erased, but there is still a record.
-
-
-
