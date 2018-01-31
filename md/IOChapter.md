@@ -173,6 +173,9 @@ Call `connection.setDoOutput(true)` and then write to `connection.getOutputStrea
 -
 ## Serialization
 
+- Serialization is a mechanism of converting the state of an object into a byte stream.
+- Deserialization is the reverse process where the byte stream is used to recreate the actual Java object in memory.
+- This mechanism is used to persist the object.
 - Classes must implement `Serializable` to be serialized
 - Serialization is safe if all instance variables are primitives, enums, or other Serializable objects
 - Collections are Serializable if their elements are.
@@ -215,8 +218,17 @@ public class Student implements Serializable{
 -
 ### Full Signatures
 
-- `private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException`
-- `private void writeObject(ObjectOutputStream out) throws IOException`
+general interface for serialization
+
+```Java
+// from java.io.ObjectOutputStream:
+public final void writeObject(Object obj)
+                       throws IOException
+
+// from java.io.ObjectInputStream
+public final Object readObject()
+                  throws IOException,  ClassNotFoundException
+```
 
 -
 ### `readResolve()` and `writeReplace()`
