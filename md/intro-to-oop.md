@@ -1,103 +1,203 @@
-#Introduction to Object-Oriented Programming
+# Introduction to Object-Oriented Programming
 -
 -
 
-###Introduction to Object-Oriented Programming
+### Introduction to Object-Oriented Programming
 
-* Yesterday you had a lecture on procedural programming, which has its place in the world. The issue the bigger the problems get, the harder it is to manage the code base.
+* Yesterday you had a lecture on procedural programming, which has its place in the world.
+* The issue the bigger the problems get, the harder it is to manage the code base.
+
+-
+
+
+### Introduction to Object-Oriented Programming
+
+* Breaking the problem down into small logical objects
+  * each having a single responsibility
+* An easier way of managing larger problems
+* Provides scalability of solutions over time.
+
+* Allows for greater testability of code.
+
+* Makes program easier to read understand, and debug.
+
+-
+-
+# Object
+* an **Object** is the fundamental unit of OOP
+* EVERYTHING is an an Object.
+* Sometimes, Java Objects model real-world objects.
+
+* a Car, Truck,
+* a Person, an Address, a Printer, a Disk
+* a BankAccount, a TaxReturn, a JavaStudent
+
+-
+# Object
+
+All **OBJECTS** have
+
+* **Identity** - how that object is distinguished from other objects of the same type. **What's its name?**
+* **State** - the value of the internal objects this object contains. **What does it store?**
+* **Behavior** - what services or actions this object can perform. **How does it act?**
 
 -
 
-
-###Introduction to Object-Oriented Programming
-
-* Breaking the problem down into small logical objects that have a single responsibility is an easier way of managing larger problems, and scalability of solutions over time.
-
-* It is also allows for greater testability of code.
-
--
--
 # Classes
-*  A class is a blueprint or a template for an object. Consider a blind person, the only way they can comprehend what something looks like , is via a verbal description. The computer knows the shape or composition of an object via its class definition.
+
+* **Class** is template/blueprint for Objects
+* You **construct objects from a specific class**
+* The **object** you constructed is an **instance of that class** or an OBJECT INSTANCE
+
+* Java has **thousands** of classes in its Standard library
+* you've used `System.out` object which is an instance of the `java.io.PrintStream` class
+
+-
+# Writing a Class
+
+* IN Java, you basically write/debug/test Java classes all day long.
+* When you run a Java program, it creates Objects which do useful (we hope) things
+* when it doesn't, you edit a class and run/test it again - forever sometimes
+
+* create **variables** to store State
+* write **methods** to describe Behavior
+* write **constructors** to construct and initialize an Object and give it an Id
+* write **tests** that test the objects and make sure they do what you want
+
+-
+# Example Class
+
+BigBossSays
+
+* I need an object which stores a person's name and age.
+* I need to get their name and age as a single string.
+* And all the persons should be kept separate in different objects.
+
+`file Person.java`
+```Java
+public class Person {
+    // instance variables
+    String name;
+    int age;
+
+    // constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // instance method
+    public String getNameAndAge() {
+        return name + " " + age;
+    }
+}
+```
+
+-
+
+# Classes/Objects and the Instance/static difference
+
+* if a **method** is declared **static**
+  * you do not need to create an object to call it.
+  * e.g. Math.sin(x);
+
+  * if it weren't you'd have to
+```
+Math math = new Math(); x = math.sin(y);
+```
+
+* if a **variable** is declared **static**
+  * all objects of that class can use it.
+  * `private static long lastSerialNumber`
+  * every time an object is constructed, you increment and assign to an instance variable `serialNumber`
 
 -
 -
 # Encapsulation
-* *Encapsulation* - encapsulation is simply combining data and behavior in one package and hiding the implementation details from the users of the objects.
+
+*Encapsulation* is simply combining data (variables) and behavior (methods) in one package and hiding the implementation details from the users of the objects.
+
+
+-
+## Objects are services
+
+The objective of **Object oriented programming** is having objects providing services to other objects via messages or calling their public methods.
 
 -
 
-##Objects are services
+## Single Responsibility
 
-*  Object oriented programming objective is having objects providing services to other objects via messages or their public methods.
-
--
-
-##Single Responsibility
-
-* How an object completes the task that it is asked to do is no one's business but its own. The only thing that the asking object cares about is the correct answer; how that answer is generated is irrelevant. Hence, Single Responsibility.
+* How an object completes the task that it is asked to do is no one's business but its own.
+* The only thing that the asking object cares about is the correct answer; how that answer is generated is irrelevant. Hence, Single Responsibility.
 
 -
 
-##Single Responsibility
+## Single Responsibility
 
 * Think about a printer in an office. Do you care how the printer works, or do you only care about the documents you asked it to make?
 
 * It's not your job to print the documents, so you don’t need to or care about how it's done. Only that it gets done.
 
 -
-##Single Responsibility
+## Single Responsibility
 
 * That's the major premise behind encapsulation,  how an object implements the tasked asked of it, is on a need-to-know basis.
 
 -
 -
 
-##Defense
+## Defense
 
-* Encapsulation is also important in defensive programming.  Object methods should only be able to change and interact with field objects of the same class they belong to. This way, you can control the probability of unintended bugs in the future.
+* Encapsulation is also important in defensive programming.  
+
+1. Object methods should only be able to change and interact with instance variables.
+
+2. ObjectA can only interact with ObjectB by calling ObjectB's methods.
+  * don't just reach in and change another object's variables. Just Don't.
+
+* This way, you can control the probability of unintended bugs in the future.
 
 -
 
-##Defense
-
-* If an object needs to change the value of a field in another object, it should ask to do so via a method.
-
--
-
-##Defense
+## Defense
 
 * The value of this is you have the flexibility of changing how a class produces or implements an action, without directly effecting the other classes in the program. It also allows for you to write clear and comprehensive tests for every intended action that an object could be expected to do.
 
 -
 -
 
-#Objects
+# Objects
 As stated before, all objects have 3 major parts:
 
-* **Identity** - how that object is distinguished from other objects of the same type.
-* **State** - the value of the member of objects this object contains.
-* **Behavior** - what services or actions this object can perform.
+* **Identity** - how that object is distinguished from other objects of the same type. **What's its name?**
+* **State** - the value of the internal objects this object contains. **What does it store?**
+* **Behavior** - what services or actions this object can perform. **How does it act?**
 
 -
-##Proper names
-* Objects should be named after nouns, and the actions they perform should be associated with verbs.
+## Proper names
+* Objects should be named after nouns
+  e.g. Car
+* Methods should be associated with "action" verbs.
+  e.g. start()
 
+* Never write a method named **mightPossiblyDoSomethingUsefulIfYouAskNicely()**
 -
 -
 
-##Relationships between Classes
+## Relationships between Classes
 
 * **Dependence** (“Uses-a”) - Think about the objects a class needs to complete its job.
 
 -
 
-##Relationships between Classes
+## Relationships between Classes
 
 * Objects are containers. Each has its own "state"
 * Each employee works slightly different hours each week.
 * But they all "punch in" on a single time-clock on the wall each with a different time-card.
-* How can we model this?
+
+How can we model this?
+
 * Think about a scenario in which you have a time-keeping application that has the following objects:
 	* Employee
 	* TimeCard
@@ -105,7 +205,7 @@ As stated before, all objects have 3 major parts:
 
 -
 
-##Relationships between Classes
+## Relationships between Classes
 
 * For the TimeCard object to function properly, it needs the TimeClock object to be created and in scope.
 
@@ -114,12 +214,12 @@ As stated before, all objects have 3 major parts:
 -
 -
 
-##Aggregation
+## Aggregation
 * **Aggregation** (“has-a”) - the objects that are contained inside the class
 
 -
 
-###Aggregation
+### Aggregation
 
 * Programs by nature should avoid complexity, so keep things as simple as possible.
 
@@ -128,7 +228,7 @@ As stated before, all objects have 3 major parts:
 * Complexity is achieved by creating container classes, which are comprised of simple objects working together to achieve one objective.
 
 -
-##Inheritance
+## Inheritance
 * **Inheritance** (“is-a”) - this relationship is polymorphic in nature this relationship talks about what the object is extended from.
 
 * Remember that all objects in java are extended from **Object.class** except for primitives.
@@ -136,13 +236,13 @@ As stated before, all objects have 3 major parts:
 -
 -
 
-#Objects and Instance Variables
+# Objects and Instance Variables
 * The **new**  keyword is the magic word that tells the JVM to add a new object to the heap.
 * We used **new** back when we created Arrays. That's because an Array object is constructed from the Array **class**
 * We commonly construct **objects** with **new**
 * Each object has its OWN copies of the 'instance variables'.
 ```
-// maybe person object has an instance variable 'age'
+// maybe Person object has an instance variable 'age'
 // joe.age might be 28
 // mary.age might be 29
 ```
