@@ -31,11 +31,16 @@ A commit is a change to the repository.  For every commit made, you have a recor
 
 ##Git Commands
 -
-* `git init` -- Creates a new local repository in the current directory.
-  * NOTE: This isn't really that common of a command.  So if you find yourself typing it with any regularity, you're probably doing something wrong.
+* `git init`
+    * Creates a new local repository in the current directory.
+    * This command will rarely be used during this course as most work being done will be collaborative and pre-existing assignments.
+    * If you find yourself typing this command regularly, you're probably doing something wrong.
 
 -
-* `git clone {project}` -- This is how you will clone a repository from a remote resource (Github, Gitlab, internal Git server, etc).  This will create a directory inside your current directory, and put your project in there.  So if you are in an empty directory called `dev` and you do `git clone https://github.com/zipcoder/git-tester.git`, the `dev` directory should now contain only a directory called `GitTester` and that directory is where the project you cloned lives.
+* `git clone {project}`
+* Clones a repository from a remote resource (Github, Gitlab, internal Git server, etc).
+* This will create a directory inside your current directory which encapsulates the project retrieved from the clone command.
+* By executing `git clone https://github.com/zipcoder/git-tester.git` in the `dev` directory, one can expect to see a `git-tester` directory generated in their `dev` folder.
 
 -
 Running `git status` from `dev` should return 
@@ -60,17 +65,40 @@ nothing to commit, working directory clean
 * `git add {file, directory, ., or other}` -- This stages changes to be committed.  This, however does not commit that change.  This essentially means that you're about to commit some changes.  By specifying a file, it will just add that one file.  By specifying a directory, every change from that directory down will be added.  By specifying `.`, that says "Add all changes from this directory downward."  Meaning that if you're in the root of a git project (like `dev/GitTester` from our example above, all changes in `GitTester` and every directory within it will be added.
 
 -
-* `git commit -m "{commit message}"` -- This commits your added changes locally and attaches the commit message to the commit.  Quick note on commit messages, they should be short but descriptive of all the changes you've made.  Be serious about commit messages.  If someone wants to know what you've done, they should be able to understand your changes strictly from the commit message.  Also, note that doing a `commit` does not apply that commit to the remote repository.  It only applies it locally and you must push it to the remote repository.  It also only applies to the branch you are on.
+* `git commit -m "{commit message}"`
+    * Commits your added changes locally and attaches the commit message to the commit.
+    * Commit messages should be short but descriptive of all the changes you've made.
+    * `commit` does not apply affect a remote repository until a `push` occurs.
+
+
 
 -
-* `git push` -- This will take the locally committed changes for a given branch and apply them to the remote repository.  So, if you've committed a change with `git commit`, the only way for everyone else to be able to use your changes is to run `git push`.
-* `git push -u origin {branch}` -- This is how you put a new branch on the remote repository.  If you create a branch, the server has no knowledge of it.  It, essentially, tells the remote repository "Hey, I'm gonna be making changes on a branch, but I want you to keep track of those, too.  So here's where to put it and what to call it."
+* `git push`
+    * This will take the locally committed changes for a given branch and apply them to the remote repository.
+    * If you've committed a change with `git commit`, the only way for everyone else to be able to use your changes is to run `git push`.
+
+
+
+
+* `git push -u origin {branch}`
+    * Creates a new branch on the remote repository.
+    * If you create a branch, the server has no knowledge of it.
+    * It, essentially, tells the remote repository
+        * "Hey, I'm gonna be making changes on a branch, but I want you to keep track of those, too. So here's where to put it and what to call it."
 
 -
-* `git pull` -- This takes the changes that have been made to the remote repository and applies them to your local version.  So, if someone else pushed a change, you must run `git pull` to be able to view and use their changes.
+* `git pull`
+    * This takes the changes that have been made to the remote repository and applies them to your local version.
+    * If someone else pushed a change to a remote repository, you must run `git pull` to be able to view and use their changes.
 
 -
-* `git merge {branch}` -- This command is pretty confusing and kind of dangerous if you don't know what you're doing.  What it does is applies all of the commits from the branch specified and applies them to your current branch.
+* `git merge {branch}`
+    * Applies all commits from specified branch to your current branch.
+
+
+
+
+
 
 -
 -
@@ -78,15 +106,27 @@ nothing to commit, working directory clean
 ## Example Time
 
 -
-The commands might not make a bunch of sense without context.  So here's some context of a workflow that uses git and makes use of the commands.
+* The commands might not make a bunch of sense without context.
+* So here's some context of a workflow that uses git and makes use of the commands.
+
+
 
 -
-Consider that you've started working for a new company that is building a calculator.  They have most of the functionality built out, but they need you to implement the division function of the calculator.  So, you have some directory called `dev` where you do all your development work.  Your first step is:
+* Consider that you've started working for a new company that is building a calculator.
+* They have most of the functionality built out, but they need you to implement the division function of the calculator.
+* So, you have some directory called `dev` where you do all your development work.
+* Your first step is:
+    * `git clone https://github.com/Zipcoder/Calcul8r.git`
 
-`git clone https://github.com/Zipcoder/Calcul8r.git`
+
 
 -
-Now, `dev` has a `Calul8r` directory, and a `git status` in `dev` shows that there is no git project in `dev`.  Now, you go into `Calcul8r` and do a `git status` to prove that you're up to date with the master branch of the company's `Calcul8r` repo.
+* Now, `dev` has a `Calul8r` directory.
+* Executing `git status` in `dev` reveals that there is no git project in `dev`.
+* Now, you go into `Calcul8r` and do a `git status` to prove that you're up to date with the master branch of the company's `Calcul8r` repo.
+
+
+
 
 -
 Next, you run `git branch -a` to see exactly what branches exist on this companies repository.
@@ -100,22 +140,25 @@ Next, you run `git branch -a` to see exactly what branches exist on this compani
 
 
 -
-So, from here, you can see that your new collegues have made branches for `add`, `subtract`, and `multiply`.  That's good.  Now you know that since you're implementing divide, you should make a `divide` branch.  To do this, you run:
+* So, from here, you can see that your new collegues have made branches for
+    * `add`, `subtract`, and `multiply`.
+* Because you're implementing divide, you should make a `divide` branch.
+* To do this, you run:
+    * `git branch divide`
+        * create a branch named `divide`
+    * `git checkout divide`
+        * checks out the newly created `divide` branch
 
-`git branch divide`
 
-then
 
-`git checkout divide`
 
 -
-Now, you have a local branch, but you want to cover your bases and tell Github to start tracking a remote version of it.  So you run:
-
-`git push -u origin divide`
+* Now, you have a local branch, but you want to cover your bases and tell Github to start tracking a remote version of it.
+* So you run:
+    * `git push -u origin divide`
 
 -
-Now, a `git branch -a` shows:
-
+* Now, a `git branch -a` shows:
 > 
   master<br/>
   \* divide
@@ -128,32 +171,32 @@ Now, a `git branch -a` shows:
   
   
 -
-Now you're ready to start developing.  You modify a file called `Operations` and add your divide function.  You also modify `OperationsTest` and make unit tests for your new divide function.  You're ready to get everything up on the remote server, so you run:
-
-`git add .`
-
-`git commit -m "Added divide function and unit tests"`
-
-`git push`
-
--
-A `git status` should tell you that you're up to date.
-
-Now you're ready to merge your stuff into your master branch to make sure that everything's cool.
-
+* Now you're ready to start developing.
+* You modify a file called `Operations` and add your divide function.
+* You also modify `OperationsTest` and make unit tests for your new divide function.
+* You're ready to get everything up on the remote server, so you run:
+    * `git add .`
+    * `git commit -m "Added divide function and unit tests"`
+    * `git push`
 
 -
-First,
-`git pull` to make sure that you're up to date with the remote version.  This way, if someone made a change to master, you won't have issues with your merge.
+* A `git status` should tell you that you're up to date.
+* Now you're ready to merge your stuff into your master branch to make sure that everything's cool.
 
-Next,`git checkout master` and `git merge divide`.
 
-If everything's good, then you will now have all of your commits on top of the master commits.  Otherwise, you'll have to handle a merge conflict.  We'll touch on this later.
+-
+* `git pull` to make sure that you're up to date with the remote version.
+* This ensures that you won't have issues with your merge if someone made a change to master.
+* Next,`git checkout master` and `git merge divide`.
+* If everything's good, then you will now have all of your commits on top of the master commits.  Otherwise, you'll have to handle a merge conflict.  We'll touch on this later.
+
+
+
 
 -
 -
 
-##Git TL;DR
+## Git TL;DR
 * `git clone {remote project}`
 * `git branch {branchname}`
 * `git checkout {branchname}`
@@ -167,15 +210,31 @@ If everything's good, then you will now have all of your commits on top of the m
 * `git checkout master`
 * `git merge {branchname}`
 
--
--
-##Merge Conflicts
+
+
 
 -
-A merge conflict is what happens when you try to merge a file over another file that have both been changed.  Consider this scenario:
+-
+## Merge Conflicts
+
+
 
 -
-That division function that you wrote, well, it turns out Matt Multiplication decided it would be cool to implement it himself.  When you checkout master, the file you changed was in state A.  When Matt decided to make the change, his version was also in state A.  You make your changes on your branch, but before you can merge it into your up-to-date version of master, Matt pushed his change.  This means that the file is now in state B, and you're trying to put it in state B.  You can't.  Plus, considering that keep keeps a running log of the state of a file, you now need to make your changes as if they came after Matt's change (since it keeps the order).  Congrats!  Matt just helped usher you into the world of merge conflicts.
+* A merge conflict is what happens when you try to merge a file over another file that have both been changed.
+* Consider this scenario:
+
+
+
+
+-
+* Matt Multiplication decided to implement the multiplication method himself.
+* When you checkout master, the file you changed was in state A.
+* When Matt decided to make the change, his version was also in state A.
+* When Matt pushes his changes to master, the branch was in state
+* You make your changes on your branch, but before you can merge it into your up-to-date version of master, Matt pushed his change.
+* This means that the file is now in state B, and you're trying to put it in state B. You can't.
+* Plus, considering that keep keeps a running log of the state of a file, you now need to make your changes as if they came after Matt's change (since it keeps the order).
+* Congrats! Matt just helped usher you into the world of merge conflicts.
 
 -
 Now, I know merge conflicts are scary.  Keep in mind, though, that YOU CANNOT BREAK ANYTHING!  Git exists partially so that when people screw stuff up, you can just go back to a previous, safe version of the software.  So be strong.  We'll get through this.
