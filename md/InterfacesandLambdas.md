@@ -24,7 +24,7 @@ public class RandomQuote implements SmartQuotes { ... }
 ```
 -
 
-* Within this class you _must_ implement all methods within the interface
+* Within this class you _must_ implement all methods declared by the interface
 
 ```
 package io.zipcoder;
@@ -81,7 +81,7 @@ public int compareTo(String anotherString)
 ```
 -
 
-    * There is no way for this method to know how to sort these custom objects by default unless this object implements Comparable.
+    * There is no way for this method to know how to sort these custom classes by default unless this class implements Comparable.
     * Implementing Comparable tells the sort method that these objects can respond to the comparetTo(T t) request.
 
 -
@@ -297,7 +297,7 @@ public class Vision implements Mjolnir, CaptainAmericasShield {
   /**
    * Here we have a class that implements two interfaces with
    * default implementations the compiler has no way of implicitly
-   * who should be called so we have to explicitly state it.
+   * knowing who should be called so we have to explicitly state it
    **/
 
   public String getNameOfWeapon(){
@@ -415,6 +415,7 @@ public class Race {
 ```
 -
 -
+_must_ implement all methods within the interface
 
 <img src = 'https://i0.wp.com/theverybesttop10.com/wp-content/uploads/2014/06/Top-10-Baby-Chicks-in-Hats-1.jpg?resize=510%2C410&ssl=1'>
 
