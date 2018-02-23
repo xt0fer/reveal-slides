@@ -1,22 +1,10 @@
 ## 6.1 Interfaces
 * **interface** - an interface is not a class but a set of requirements for the classes that want to conform to the interface.
-* The interface is a contract or a promise for the classes implementing it agrees to respond to.
-* All methods of an interface are default **public**
-* Implements keyword is you to declare that a class is using an interface
-* To implement an interface, you must carry out two steps
-
-
--
-* You declare that your class intends to **implement** the given interface.
-
-```
-public class RandomQuote implements SmartQuotes { ... }
-
-```
-
 -
 
-* You supply definitions for all methods in the interface
+  * To create an interface you use the keyword `interface`
+  * The interface should contain only method declarations
+  * All methods of an interface are implicitly **public**
 
 ```
 package io.zipcoder;
@@ -25,7 +13,18 @@ public interface SmartQuotes {
      String selectRandomQuote();
 }
 ```
+
 -
+
+* The `implements` keyword is used to declare that a class is using an interface
+
+```
+public class RandomQuote implements SmartQuotes { ... }
+
+```
+-
+
+* Within this class you _must_ implement all methods within the interface
 
 ```
 package io.zipcoder;
@@ -42,9 +41,14 @@ public class RandomQuote implements SmartQuotes{
     }
 }
 ```
+
 -
-* **Interface Comparable\<T\>**
-  * **Java Comparable** interface is used to order the objects of user-defined class. This interface is found in the **java.lang** package and contains only one method named **compareTo(Object)**. It provides single sorting sequence only, i.e. you can sort the elements on based on single data member only. For example it may be rollno, name, age or anything else.
+-
+
+* **Interface Comparable&lt;T&gt;**
+  * **Java Comparable** interface is used to order the objects of a user-defined class. 
+  * This interface is found in the **java.lang** package and contains only one method `compareTo(Object)`.
+  * It provides single sorting sequence only
 
 -
 
@@ -66,17 +70,20 @@ public int compareTo(String anotherString)
     sayians[1] = new Saiyan("Goku", 9000);
     sayians[2] = new Saiyan("Gohan", 3000);
 
-    // There is no way for this method to know how to sort these custom objects
-    // by default unless this object implements Comparable.
-    // Implementing Comparable tells the sort method that these objects can respond to
-    // the comparetTo(T t) request.
     Arrays.sort(sayians);
 
     for (Sayian s: sayians)
-      System.out.println("Name=" + s.getName() + ", order=" + s.getPowerLevel());
+      System.out.println("Name=" + s.getName() 
+          + ", order=" + s.getPowerLevel());
 
+    ...
   }
 ```
+-
+
+    * There is no way for this method to know how to sort these custom objects by default unless this object implements Comparable.
+    * Implementing Comparable tells the sort method that these objects can respond to the comparetTo(T t) request.
+
 -
 
 ```
@@ -161,14 +168,14 @@ public class Guardians {
 
 ```
 public abstract GuardianOfGalaxy {
-    Double attackEnemy(Enemy enemy);
+    abstract Double attackEnemy(Enemy enemy);
 
-    String battleCry();
+    abstract String battleCry();
 }
 
 public abstract Avengers {
 
-  void AvengersAssemble();
+  abstact void AvengersAssemble();
 }
 ```
 
@@ -203,6 +210,14 @@ public class IronMan implements Avengers, GuardianOfGalaxy{...}
 
 ```
 -
+-
+
+<img src = 'https://c-7npsfqifvt34x24jnhjyx2esbolfsx2edpn.g00.ranker.com/g00/3_c-7x78x78x78.sbolfs.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2fjnhjy.sbolfs.dpnx2fvtfs_opef_jnhx2f61117x2f2111210247x2fpsjhjobmx2fnjoj-qjht-qipup-v2x3fx78x3d761x26rx3d61x26gnx3dkqhx26gjux3ddspqx26dspqx3dgbdftx26j21d.nbslx3djnbhf_$/$/$/$/$/$'>
+
+-
+-
+
+
 
 ##Static Methods
 
@@ -280,13 +295,14 @@ public interface CaptainAmericasShield {
 public class Vision implements Mjolnir, CaptainAmericasShield {
 
   /**
-   * Here we have a class that implements two interfaces with default implementations
-   * the compiler has no way of implicitly who should be called
-   * so we have to explicitly state it.
+   * Here we have a class that implements two interfaces with
+   * default implementations the compiler has no way of implicitly
+   * who should be called so we have to explicitly state it.
    **/
 
   public String getNameOfWeapon(){
-    return Mjolnir.super.getNameOfWeapon() + ", " + CaptainAmericasShield.super.getNameOfWeapon();
+    return Mjolnir.super.getNameOfWeapon() 
+      + ", " + CaptainAmericasShield.super.getNameOfWeapon();
   }
 }
 ```
@@ -397,3 +413,9 @@ public class Race {
 
 }
 ```
+-
+-
+
+<img src = 'https://i0.wp.com/theverybesttop10.com/wp-content/uploads/2014/06/Top-10-Baby-Chicks-in-Hats-1.jpg?resize=510%2C410&ssl=1'>
+
+
