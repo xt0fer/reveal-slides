@@ -50,7 +50,7 @@
 - `{n}`, `{n,m}` - Repeat previous match *n* times or *n* to *m* times
 	* `a{1}` matches "a"
 	* `a{2}` does not match "a" but does match "aa"
-	* `a{1,2}` mathces both "a" and "aa"
+	* `a{1,3}` matches all of "a" and "aa" and "aaa"
 
 -
 
