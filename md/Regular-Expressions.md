@@ -40,8 +40,8 @@
 	* `a+` matches "a" and "aa" and "aaa" etc.
 	* `ab+` matches "ab" and "abb" but not "a" or "b"
 - `*` - match 0 or more occurrences of the last symbol
-	* `ab*` matches "ab" bnd "abb" and "abbb" etc.
-	* `a*` will also match "a"
+	* `ab*` matches "ab" and "abb" and "abbb" etc.
+	* `ab*` will also match "a"
 
 -
 
