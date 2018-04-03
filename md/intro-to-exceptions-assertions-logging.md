@@ -237,7 +237,7 @@ public class FilePrinterTest {
 
 }
 ```
- 
+
 
 -
 ###Dynamic Exception Handling: Expanded
@@ -251,7 +251,7 @@ public class FilePrinterTest {
 	    } catch(FileNotFoundException fnfe) {
 	        fnfe.printStackTrace();
 	    }
-	
+
 	    try {
 	        fpt.printFile();
 	    } catch (IOException e) {
@@ -294,14 +294,14 @@ public class FilePrinterTest {
 	    try {
 	        fpt = new FilePrinter(invalidFileName);
 	        fpt.printFile();
-	    
+
 	    // bit-wise operator supported by java 1.7+    
-	    } catch(FileNotFoundException | IOException exception) { 
+	    } catch(FileNotFoundException | IOException exception) {
 	        // handle all exceptions the same way
 	        exception.printStackTrace();
 	    }
 	}
-	
+
 }
 ```
 * Each expected exception in this class is explicitly named.
@@ -324,7 +324,7 @@ public class FilePrinterTest {
 	    } //Isn't a number...");
          catch(IllegalArgumentException iae) {
             iae.printStackTrace();
-            
+
         }
     }
 
@@ -384,7 +384,7 @@ public class FilePrinterTest {
 ###Purpose
 <p class="fragment fade-up">* When code throws an exception, it stops processing the remaining code in the scope, then exits the method.</p>
 <p class="fragment fade-up">* If the method has acquired some local resource, then this can become an issue; The program will cease execution, and hold the resource indefinitely.</p>
-<p class="fragment fade-up">* The finally clause executes whether or not an exception was code.</p>
+<p class="fragment fade-up">* The finally clause executes whether or not an exception was caught.</p>
 
 -
 ###Conditions under which `finally` block is executed
@@ -399,7 +399,7 @@ public class FilePrinterTest {
 ```Java
 class BookExample {
 	public void example1() {
-		InputStream in = ... ;
+		InputStream in = ... ; //open a file
 		try {
 			try {
 				// code that may throw exception
@@ -412,7 +412,7 @@ class BookExample {
 	}
 }
 ```
-	
+
 
 
 
@@ -491,7 +491,7 @@ class BookExample {
 <p class="fragment fade-up">* It's easy to (un)suppress all log records, or just those below a certain level.</p>
 <p class="fragment fade-up">* Suppressed logs are inexpensive; The penalty for leaving them in your code is minimal.</p>
 <p class="fragment fade-up">* Log records can be directed to different handlers; Console display, writing to file / database, etc.</p>
-<p class="fragment fade-up">* Log records can be formatted; For example, plaint ext, or XML</p>
+<p class="fragment fade-up">* Log records can be formatted; For example: plain text, or XML</p>
 <p class="fragment fade-up">* Logging configuration is controlled by configuration file; Applications can replace this mechanism</p>
 
 
@@ -499,13 +499,13 @@ class BookExample {
 -
 ###The 7 Logging Levels
 * By default, loggers will log all messages of `INFO` or higher to console.
-* `SEVERE`
+* `SEVERE` highest
 * `WARNING`
-* `INFO`
+* `INFO` default
 * `CONFIG`
 * `FINE`
 * `FINER`
-* `FINEST`
+* `FINEST` lowest
 
 -
 ###Syntax

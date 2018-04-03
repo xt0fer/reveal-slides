@@ -3,8 +3,25 @@
 -
 #### Liskov Substitution Principle
 
-An instance of type T can be replaced by an instance of type S if S is a subtype of T.
+An instance of type T can be replaced by an instance of type S
+if
+S is a subtype of T.
 
+```Java
+
+public interface GasFueled{}
+public interface Electric{}
+public class Vehicle{}
+  // subtype of Vehicle
+public class FordTaurus extends Vehicle implements GasFueled{}
+  // subtype of Vehicle
+public class TeslaS extends Vehicle implements Electric{}
+
+FordTaurus taurus = new FordTaurus();
+Vehicle rental = taurus;
+TeslaS snazzy = new TeslaS();
+rental = snazzy;              // All of these are legal;
+```
 -
 ## Polymorphic Program design
 

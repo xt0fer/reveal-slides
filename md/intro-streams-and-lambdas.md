@@ -33,8 +33,8 @@
 #Usage
 ```Java
 // This method definition showcases for-each-loop syntax
-public void forEachLoop(String[] strings) {
-    for (String currentString : strings) {
+public void forloopPrint(String[] stringArray) {
+    for (String currentString : stringArray) {
         System.out.println(currentString);
     }
 }
@@ -79,7 +79,9 @@ public Stream<String> fromArray2(String[] stringArray) {
     return stringStream;
 }
 ```
-
+*Two ways of getting the same result.*
+*And one should not be surprised to find this from time to time
+in the Java Standard Libraries.*
 
 -
 #From varargs
@@ -315,7 +317,7 @@ public Stream<String> sort(String[] words) {
 -
 #`.count`
 ```Java
-/** @return number of elements in stream */
+/** @return number of elements in an array using a stream */
 public int getCount(String[] stringArray) {
     return (int) Arrays.stream(stringArray).count();
 }
@@ -325,12 +327,12 @@ public int getCount(String[] stringArray) {
 -
 #`.min`, `.max`
 ```Java
-/** @return longest String object in stream */
+/** @return longest String object in an array using a stream */
 public Optional<String> getMax(String[] stringArray) {
     return Arrays.stream(stringArray).max(String::compareToIgnoreCase);
 }
 
-/** @return longest String object in stream */
+/** @return longest String object in an array using a stream */
 public Optional<String> getMax(String[] stringArray) {
     return Arrays.stream(stringArray).min(String::compareToIgnoreCase);
 }
@@ -341,12 +343,12 @@ public Optional<String> getMax(String[] stringArray) {
 -
 #`.findFirst`, `.findAny`
 ```Java
-/** @return arbitrary small String */
-public Optional<String> getRandom(String[] stringArray) {
+/** @return get first String from an array using a stream */
+public Optional<String> getFirst(String[] stringArray) {
     return Arrays.stream(stringArray).findFirst();
 }
 
-/** @return arbitrary small String */
+/** @return a random string in an array using a stream */
 public Optional<String> getRandom(String[] stringArray) {
     return Arrays.stream(stringArray).findAny();
 }
@@ -483,7 +485,7 @@ S s = new S();
 U u = s.f().g();
 ```
 
-	
+
 -
 #`.map` yields (potentially) nested structure
 ```
@@ -559,11 +561,11 @@ public class CollectorsDemo {
     public CollectorsDemo(List<String> list) {
         this.list = list;
     }
-    
+
     private Stream<String> toStream() {
         return list.stream();
     }
-    
+
     public String[] toArray() {
     	return toStream().toArray(String[]::new);
     }
@@ -658,7 +660,7 @@ public class CollectorsDemo {
 -
 #Using `.collect()`<br>to collect to a `Map`
 * In the common case, when the values should be the actual elements, use `Function.identity()` instead.
- 
+
 ```Java
 public class CollectorsDemo {
     private final List<String> list;
@@ -716,7 +718,7 @@ public Map<String, List<Locale>> groupingByDemo() {
 * A `Predicate` is a single-argument, boolean-returning operation.
 * A `Consumer` is a single-argument, void-returning operation.
 * A `classifier` is a predicate used to group a stream.
-* A `lambda` is a function which can be created without belonging to any class. 
+* A `lambda` is a function which can be created without belonging to any class.
 * A `method reference` is how java handles the nuance of passing methods as arguments.
 
 
@@ -756,7 +758,7 @@ class Demo {
 	    Stream<Locale> locales = LocaleFactory.createLocaleStream();
 	    Map<String, Set<Locale>> countryToLocaleSet = locales.collect(
 	            groupingBy(Locale::getCountry, toSet()));
-	
+
 	    return countryToLocaleSet;
 	}
 }
@@ -942,7 +944,7 @@ public class PrimitiveStreams {
 	3. Operations are stateless and can be executed in an arbitary order.
 
 
-	
+
 -
 #Improper usage
 * Here is an example of somethign you cannot do.
