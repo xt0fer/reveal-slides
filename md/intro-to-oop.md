@@ -89,7 +89,7 @@ public class Person {
     // instance method
     public String getNameAndAge() {
         return name + " " + age;
-    }
+    } // someday, this is should be toString()
 }
 ```
 
