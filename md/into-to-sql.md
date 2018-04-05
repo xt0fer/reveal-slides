@@ -204,13 +204,13 @@ What have we just done? _We created a SCHEMA_
 Teachers have a name and a specialty. We are going to create a table with these fields as well as a unique identifier. To create a a table we use the `CREATE TABLE` command. Let's make the Teacher Table
 
 ```
-CREATE TABLE teachers
+CREATE TABLE zipcode.teachers
 (
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     specialty ENUM('FRONT END', 'MIDDLE TIER', 'DATA TIER')
 );
-CREATE UNIQUE INDEX teachers_id_uindex ON teachers (id);
+CREATE UNIQUE INDEX teachers_id_uindex ON zipcode.teachers (id);
 ```
 
 In this query we create each column followed by the properties of the columns. We are using the `INTEGER`, `VARCHAR`, and `ENUM` data types
@@ -222,14 +222,14 @@ In this query we create each column followed by the properties of the columns. W
 Next let us make a student table. The students will have a name, and a classroom as well notes from the teachers on a particular student
 
 ```
-CREATE TABLE students
+CREATE TABLE zipcode.students
 (
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     classroom TINYTEXT,
     notes TEXT
 );
-CREATE UNIQUE INDEX students_id_uindex ON students (id);
+CREATE UNIQUE INDEX students_id_uindex ON zipcode.students (id);
 ```
 
 In this query we create each of these columns and are using `INTEGER`, `VARCHAR`, `TINYTEXT`, and `TEXT`.
@@ -241,14 +241,14 @@ In this query we create each of these columns and are using `INTEGER`, `VARCHAR`
 Lastly we need an assignment table. This should just have the assignment name and a link to the assignment
 
 ```
-CREATE TABLE assignments
+CREATE TABLE zipcode.assignments
 (
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name TINYTEXT NOT NULL,
     URL CHAR(255) NOT NULL
 );
-CREATE UNIQUE INDEX assignments_id_uindex ON assignments (id);
-CREATE UNIQUE INDEX assignments_URL_uindex ON assignments (URL);
+CREATE UNIQUE INDEX assignments_id_uindex ON zipcode.assignments (id);
+CREATE UNIQUE INDEX assignments_URL_uindex ON zipcode.assignments (URL);
 ```
 
 We are creating a table similar to the last two, but notice we are making the URL a fixed length `CHAR` field and making that unique. Why?
@@ -260,13 +260,13 @@ We are creating a table similar to the last two, but notice we are making the UR
 Last but not least we'll be creating the teacher_meta table. In the meta table, the developers wanna keep track of the number of years a teacher has worked here and the room number of the teacher's office.
 
 ```
-CREATE TABLE teacher_meta
+CREATE TABLE zipcode.teacher_meta
 (
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     room_number TINYINT UNSIGNED,
     years TINYINT UNSIGNED
 );
-CREATE UNIQUE INDEX teacher_meta_id_uindex ON teacher_meta (id);
+CREATE UNIQUE INDEX teacher_meta_id_uindex ON zipcode.teacher_meta (id);
 ```
 
 Here we use the `TINYINT` column and make those unsigned
@@ -280,9 +280,9 @@ Now we have tables but we have learned that teachers are actually going to have 
 We are going to `ADD` first name amd last name. Then we will `DROP` name. 
 
 ```
-ALTER TABLE teachers ADD first_name VARCHAR(25) NOT NULL;
-ALTER TABLE teachers ADD last_name VARCHAR(25) NOT NULL;
-ALTER TABLE teachers DROP name;
+ALTER TABLE zipcode.teachers ADD first_name VARCHAR(25) NOT NULL;
+ALTER TABLE zipcode.teachers ADD last_name VARCHAR(25) NOT NULL;
+ALTER TABLE zipcode.teachers DROP name;
 ```
 
 -
@@ -293,9 +293,9 @@ With those tables made, we're gonna have to set this table up with `FOREIGN KEY`
 The first thing we will be creating is a One to One relationship between teachers and teacher_meta.
 
 ```
-ALTER TABLE teacher_meta ADD teacher_id int NOT NULL;
-CREATE UNIQUE INDEX teacher_meta_teacher_id_uindex ON teacher_meta (teacher_id);
-ALTER TABLE teacher_meta
+ALTER TABLE zipcode.teacher_meta ADD teacher_id int NOT NULL;
+CREATE UNIQUE INDEX teacher_meta_teacher_id_uindex ON zipcode.teacher_meta (teacher_id);
+ALTER TABLE zipcode.teacher_meta
 ADD CONSTRAINT teacher_meta_teachers_id_fk
 FOREIGN KEY (teacher_id) REFERENCES teachers (id);
 ```
@@ -310,8 +310,8 @@ Next we'll create the One to Many relationship between teachers and assignments.
 One teacher will have many assignments that they've created, and every assignment will belong to one teacher. To get this we will have to add a column called teacher_id on assignment and then mark that as a `FOREIGN KEY`
 
 ```
-ALTER TABLE assignments ADD teacher_id INTEGER NULL;
-ALTER TABLE assignments
+ALTER TABLE zipcode.assignments ADD teacher_id INTEGER NULL;
+ALTER TABLE zipcode.assignments
 ADD CONSTRAINT teacher___fk
 FOREIGN KEY (teacher_id) REFERENCES teachers (id);
 ```
@@ -340,7 +340,7 @@ We're also going to create a unique constraint to make sure that the same assign
 ### Many to Many
 
 ```
-CREATE TABLE assignment_student
+CREATE TABLE zipcode.assignment_student
 (
     assignment_id INTEGER NOT NULL,
     student_id INTEGER NOT NULL,
@@ -349,8 +349,8 @@ CREATE TABLE assignment_student
     CONSTRAINT assignments___fk FOREIGN KEY (assignment_id) 
     	REFERENCES assignments (id)
 );
-CREATE UNIQUE INDEX assignment_id_student_id_uindex 
-	ON assignment_student (assignment_id, student_id);
+CREATE UNIQUE INDEX assignment_id_student_id_uindex
+	ON zipcode.assignment_student (assignment_id, student_id);
 ```
 
 -
@@ -496,10 +496,19 @@ In order to get this done we'll have to `SELECT` data out of our database. A `SE
 - A Select clause where we say the columns we want to see 
 - A FROM clause where we specify which table to pull that data from.
 
+-
+
 ```
 SELECT id, first_name, last_name, specialty 
 FROM zipcode.teachers;
 ```
+
+| ID | First Name | Last Name |  Specialty  |
+|:---|:-----------|:----------|:------------|
+| 1  | John       | Smith     | FRONT END   |
+| 2  | Tabitha    | Schultz   | MIDDLE TIER |
+| 3  | Jane       | Herman    | DATA TIER   |
+
 
 -
 
@@ -517,6 +526,10 @@ SELECT id, first_name, last_name, specialty
 FROM zipcode.teachers
 WHERE specialty='FRONT END';
 ```
+
+| ID | First Name | Last Name |  Specialty  |
+|:---|:-----------|:----------|:------------|
+| 1  | John       | Smith     | FRONT END   |
 
 -
 
@@ -552,8 +565,11 @@ WHERE teacher_id != 1
 ORDER BY years DESC
 LIMIT 1;
 ```
+| teacher_id |
+|:----------:|
+| 3          |
 
-This returns 3, so we Select from the teachers table where id is 3 and find that Jane is the best person to take the extra classes on.
+Select from the teachers table where id is 3 and find that Jane is the best person to take the extra classes on.
 
 -
 -
@@ -583,14 +599,19 @@ SELECT t.first_name, t.last_name, tm.years FROM
 JOIN zipcode.teacher_meta tm
   ON t.id = tm.teacher_id;
 ```
-
-This will return each teacher's name along with the number of years they've worked. MySQL will go through each row in teachers and join the row in teacher_meta where the teacher's id matches the teacher_meta's teacher_id. Since this relationship is One to One, we don't have to worry about multiple rows matches to multiple rows.
+| first_name | last_name | years |
+|:-----------|:----------|------:|
+| John       | Smith     | 4     |
+| Tabitha    | Schultz   | 4     |
+| Jane       | Herman    | 11    |
 
 -
 
 ### Joins - One to Many
 
 Next lets add a join to see which teachers wrote each assignment. This time, since some teachers may have written more than one assignment, we may see some duplication in the results.
+
+-
 
 ```
 SELECT t.first_name, t.last_name, a.name, a.URL
@@ -599,13 +620,22 @@ JOIN zipcode.assignments a
   ON t.id = a.teacher_id;
 ```
 
-Notice that one of the teachers is present twice here and one teacher isn't present at all.
+| first_name | last_name | name           | URL                                                                     |
+|:-----------|:----------|:---------------|:------------------------------------------------------------------------|
+| Jane       | Herman    | Pokemon Lab    | https://github.com/Zipcoder/PokemonSqlLab                               |
+| Jane       | Herman    | Poll App       | https://github.com/Zipcoder/CR-MacroLabs-Spring-QuickPollApplication    |
+| Tabitha    | Schultz   | Sum or Product | https://github.com/Zipcoder/ZCW-MicroLabs-JavaFundamentals-SumOrProduct |
+
 
 -
 
 ### Joins - Many to Many
 
 Lastly lets see which assignments have been given to each student.
+
+For this relationship we must first join the pivot table, then join the destination table. 
+
+-
 
 ```
 SELECT s.name, a.name
@@ -615,8 +645,17 @@ JOIN zipcode.assignment_student a_s
 JOIN zipcode.assignments a
   ON a_s.assignment_id = a.id;
 ```
+| name                 | name        |
+|:---------------------|:------------|
+| Linnell McLanachan   | Pokemon Lab |
+| Lorianna Henrion     | Pokemon Lab |
+| Corena Edgeson       | Pokemon Lab |
+| Archaimbaud Lougheid | Pokemon Lab |
+| Dun Pettet           | Pokemon Lab |
+| Hymie Parrington     | Pokemon Lab |
+| Linnell McLanachan   | Poll App    |
 
-For this relationship we must first join the pivot table, then join the destination table. 
+
 
 -
 -
@@ -641,9 +680,12 @@ Aggregates are functions that allow you to run a function down a column rather t
 Count will give you the total number of rows in a table based on a column. 
 
 ```
-SELECT COUNT(*)
+SELECT COUNT(*) as "count"
 FROM teachers;
 ```
+| count |
+|:-----:|
+| 3     |
 
 Count does not consider the values in any column. It will simply add one for each row.
 
@@ -654,9 +696,13 @@ Count does not consider the values in any column. It will simply add one for eac
 Max and min will give you the largest or smallest value of a column in any row.
 
 ```
-SELECT MAX(years), MIN(years)
+SELECT MAX(years) as "max", MIN(years) as "min"
 FROM zipcode.teacher_meta
 ```
+
+| max | min |
+|:----|:----|
+| 11  | 4   |
 
 Max and Min will consider data type when doing this sort. Text will sort lexographically and numbers will sort numerically.
 
@@ -667,9 +713,13 @@ Max and Min will consider data type when doing this sort. Text will sort lexogra
 Sum will take the value of a numeric column and add together all of the values.
 
 ```
-SELECT SUM(years)
+SELECT SUM(years) as "sum"
 FROM zipcode.teacher_meta
 ```
+
+| sum |
+|:---:|
+| 19  |
 
 -
 
@@ -678,9 +728,13 @@ FROM zipcode.teacher_meta
 Group Concat will take a column and concatenate all the rows. 
 
 ```
-SELECT GROUP_CONCAT(' ', first_name, ' ', last_name)
+SELECT GROUP_CONCAT(' ', first_name, ' ', last_name) as "group_concat"
 FROM zipcode.teachers;
 ```
+
+| group_concat                              |
+|:------------------------------------------|
+|  John Smith, Tabitha Schultz, Jane Herman |
 
 -
 
@@ -697,12 +751,17 @@ Lets write a query to list teachers who have equivilent experience together.
 ### Group By
 
 ```
-SELECT GROUP_CONCAT(' ', first_name, ' ', last_name), years
+SELECT GROUP_CONCAT(' ', first_name, ' ', last_name) as "teachers", years
 FROM zipcode.teachers t
 JOIN zipcode.teacher_meta tm
   ON t.id = tm.teacher_id
 GROUP BY tm.years;
 ```
+| teachers                    | years |
+|:----------------------------|:-----:|
+| John Smith, Tabitha Schultz | 4     |
+| Jane Herman                 | 11    |
+
 
 -
 
@@ -717,10 +776,20 @@ Lets Write a query to find all students who have been assigned more than one ass
 ### Having
 
 ```
-SELECT s.name, COUNT(a_s.assignment_id)
+SELECT s.name, COUNT(a_s.assignment_id) as "assignments given"
 FROM zipcode.students s
 JOIN zipcode.assignment_student a_s
   ON s.id = a_s.student_id
 GROUP BY s.name
 HAVING COUNT(a_s.assignment_id) > 1;
 ```
+
+| name               | assignemnts given |
+|:-------------------|:-----------------:|
+| Linnell McLanachan | 2                 |
+
+-
+
+<img src="http://img.petshow.cc/ueditor/2016_01/2417092214536265621569945175386650530.jpg">
+
+DBA corgis hope you're `HAVING` a blast!

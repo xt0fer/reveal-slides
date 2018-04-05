@@ -36,6 +36,7 @@ First lecture introduction to data and SQL
             - MAX
             - MIN
             - SUM
+            - Group Concat
         * GROUP BY
         * HAVING
 LAB: Pokemon Lab
