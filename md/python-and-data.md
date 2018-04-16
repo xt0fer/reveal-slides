@@ -552,7 +552,7 @@ with open('users.csv', 'w') as user_file:
     for first_name, last_name, age in data:
         user_file.write(first_name)
         user_file.write(',')
-        user_file.write('last_name')
+        user_file.write(last_name)
         user_file.write(',')
         user_file.write(age)
         user_file.write('\n')
