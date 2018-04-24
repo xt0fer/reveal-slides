@@ -34,7 +34,7 @@
 - Open source but controlled by a single company
 - Can run on all major operating systems
 - Partions data with proprietary tech called MySQL Cluster
-- Master-Master replication
+- Leader-Leader replication
 - Not ACID compliant. Does not support Consistency or Durability 
 
 -
@@ -44,7 +44,7 @@
 - Open source and controlled by the PostgreSQL Global Development Group 
 - Can run on all major operating systems
 - Does not support true partitioning but can "replicate" the behavior
-- Master-Slave replication but third party plugins support all kinds of replication methods
+- Leader-Follower replication but third party plugins support all kinds of replication methods
 - ACID compliant
 
 -
