@@ -140,7 +140,7 @@ You may also decide to work with a technology to interact with Hadoop indirectly
 
 ### Mesos
 
-<img src="/img/ApacheMesosLogo.png">
+![logo](/img/ApacheMesosLogo.png)
 
 * Apache project for Resource Negotiation
 * Works on top of HDFS
@@ -149,7 +149,7 @@ You may also decide to work with a technology to interact with Hadoop indirectly
 
 ### TEZ
 
-<img src="/img/ApacheTezLogo_lowres.jpg">
+![logo](/img/ApacheTezLogo_lowres.jpg)
 
 * Apache project that uses its own special mapping different from MapReduce
 * Works on top of both Yarn and Mesos
@@ -158,7 +158,7 @@ You may also decide to work with a technology to interact with Hadoop indirectly
 
 ### Spark
 
-<img src="/img/spark.jpg">
+![logo](/img/spark.jpg)
 
 * Another Apache Product that replaces MapReduce
 * Key features designed for handling distributed Machine Learning
@@ -167,7 +167,7 @@ You may also decide to work with a technology to interact with Hadoop indirectly
 
 ### Pig
 
-<img src="/img/pig.png">
+![logo](/img/pig.png)
 
 * Allows for query like scripts against Yarn
 * Uses a SQL like language that gets translated before being sent to Hadoop
@@ -176,7 +176,7 @@ You may also decide to work with a technology to interact with Hadoop indirectly
 
 ### Hive
 
-<img src="/img/Hive.png" width="300">
+![logo](/img/Hive.png" width="300)
 
 * Allows for SQL queries against plain text files in Hadoop
 * SQL syntax that can treat flat files like database tables
