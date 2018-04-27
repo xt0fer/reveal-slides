@@ -633,7 +633,7 @@ you can make a lot of mistakes and have terrible performance.
 
 -
 There are multiple types of JOIN.  The main ones are:
-- INNTER JOIN
+- INNER JOIN
 - LEFT JOIN
 - RIGHT JOIN
 - FULL OUTER JOIN

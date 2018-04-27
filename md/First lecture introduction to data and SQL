@@ -1,0 +1,82 @@
+First lecture introduction to data and SQL
+    - Definitions
+        * Database
+        * Query
+        * Relational Data
+        * Indexing
+        * Basic relationships
+    - Connecting to a database
+        * Installing Mysql with docker
+        * Security concerns
+    - Creating a schema with tables
+        * Schemas and tables
+        * Making a table
+        * Altering a table
+        * One to One
+        * One to Many
+        * Many to Many
+        * Pivot Tables
+    - Seeding a database
+        * INSERTing data
+        * UPDATEing data
+    - SELECTING data
+        * Basic SELECTs
+        * WHERE clause
+        * LIMITs
+    - Relationships
+        * Joins
+        * Table Aliases
+        * FOREIGN KEYS
+        * One to One
+        * One to Many
+        * Many to Many
+    - Analytics
+        * Aggregates
+            - COUNT
+            - MAX
+            - MIN
+            - SUM
+            - Group Concat
+        * GROUP BY
+        * HAVING
+LAB: Pokemon Lab
+Second Lecture Compares Types of Data Stores and talks about connecting to them with Python (Note, this is a high level overview on why you would use each of these. It does not go over differences in syntaxes)
+    - Considerations
+        * Relational
+        * Access and Support
+        * ACID compliance
+        * SQL compliance
+        * Replication
+        * Perfomance Notes
+        * Security
+        * Concurrency
+        * Add-on Features
+        * Materialized Views
+        * Programming Language Support
+    - MySQL
+    - PostgreSQL
+    - MariaDB
+    - MongoDB
+    - Redis
+    - Putting it into code
+        * Connecting to a database with python 
+            - PostgreSQL
+            - MySQL
+        * Processing
+            - Checking for Uniformity
+            - Aggregating sets
+        * Building a report with CSV
+        * Making a JSON response
+Lab: Create an XML report using python
+Third Lecture Distributing large datasets with Hadoop and Spark
+    - Data vs Big Data
+        * Goals
+        * Size
+        * Capabilities
+    - Big Data Solutions
+        * Redshift
+        * Big Query
+    - What is Hadoop
+        * Distributing data
+        * Non-Database Datasets
+        * The Hadoop Dashboard
