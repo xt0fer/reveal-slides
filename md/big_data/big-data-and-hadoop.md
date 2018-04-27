@@ -176,7 +176,7 @@ You may also decide to work with a technology to interact with Hadoop indirectly
 
 ### Hive
 
-![logo](https://raw.githubusercontent.com/Zipcoder/reveal-slides/master/img/Hive.png" width=300)
+![logo](https://raw.githubusercontent.com/Zipcoder/reveal-slides/master/img/Hive.png" width="300)
 
 * Allows for SQL queries against plain text files in Hadoop
 * SQL syntax that can treat flat files like database tables
